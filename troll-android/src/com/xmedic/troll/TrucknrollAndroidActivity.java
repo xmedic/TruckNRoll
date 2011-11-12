@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class TrucknrollAndroidActivity extends Activity {
@@ -70,6 +71,12 @@ public class TrucknrollAndroidActivity extends Activity {
 		
 		mapView.setCenter(city);
 		mapView.setNearest(nearestCities);
+		
+		if(city.getId() == level.getGoalCityId()) {
+			Toast toast = Toast.makeText(getApplicationContext(), 
+					"Congrats! You have reached your destination", Toast.LENGTH_LONG);
+			toast.show();
+		}
 	}
 
 	private void setChoice(City city, int index) {
