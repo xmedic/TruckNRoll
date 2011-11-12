@@ -54,6 +54,7 @@ public class TrucknrollAndroidActivity extends Activity {
         
         City goal = service.getCity(level.getGoalCityId());
         goalView.setText("Goal: "  + goal.getName());
+        mapView.setGoalCity(goal);
         
 
     }
