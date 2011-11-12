@@ -1,5 +1,6 @@
 package com.xmedic.troll;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.xmedic.troll.components.ScrollableImageView;
@@ -52,7 +53,7 @@ public class TrucknrollAndroidActivity extends Activity {
         moveToCity(service.getCity(level.getStartCityId()));
         
         City goal = service.getCity(level.getGoalCityId());
-        goalView.setText("Goal: " + goal.getName());
+        goalView.setText("Goal: "  + goal.getName());
         
 
     }
@@ -63,12 +64,14 @@ public class TrucknrollAndroidActivity extends Activity {
 		
 		Log.d("moveToCity", city.getId());
 		Log.d("moveToCity", "neares city size " + nearestCities.size() + " id used " + city.getId());
-		int index = 0;
+
 		
 		button1.setVisibility(View.INVISIBLE);
 		button2.setVisibility(View.INVISIBLE);
 		button3.setVisibility(View.INVISIBLE);
 		button4.setVisibility(View.INVISIBLE);
+		
+		int index = 0;
 		
 		for(City nearestCity : nearestCities) {
 			setChoice(nearestCity, index);	
@@ -78,7 +81,7 @@ public class TrucknrollAndroidActivity extends Activity {
 		mapView.setCenter(city, this);
 		mapView.setNearest(nearestCities);
 		
-		if(city.getId() == level.getGoalCityId()) {
+		if(city.getId().equals(level.getGoalCityId())) {
 			Toast toast = Toast.makeText(getApplicationContext(), 
 					"Congrats! You have reached your destination", Toast.LENGTH_LONG);
 			toast.show();
@@ -128,9 +131,11 @@ public class TrucknrollAndroidActivity extends Activity {
        button3.setOnClickListener(citySelectedListener);
        button4.setOnClickListener(citySelectedListener);
        
+       goalView = (TextView)findViewById(R.id.targetcity);
+       
        mapView = (ScrollableImageView)findViewById(R.id.map);
        
-       goalView = (TextView)findViewById(R.id.targetcity);
+       
 	}
 
 	private void initGraphics() {
