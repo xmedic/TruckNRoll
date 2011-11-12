@@ -68,7 +68,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" android:background="@color/translucent_black"/>
+            android:textAppearance="?android:attr/textAppearanceLarge" android:background="@color/translucent_black" android:textSize="20pt"/>
 
     </RelativeLayout>
 
