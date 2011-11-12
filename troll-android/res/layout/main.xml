@@ -24,7 +24,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:background="@drawable/rounded_corner_box"
-            android:text="Button" android:textSize="30"/>
+            android:text="Button" android:textSize="20dp" android:layout_margin="5dp"/>
 
         <Button
             android:id="@+id/button2"
@@ -33,7 +33,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/rounded_corner_box"
-            android:text="Button" android:textSize="30"/>
+            android:text="Button" android:textSize="20dp" android:layout_margin="5dp"/>
 
         <Button
             android:id="@+id/button3"
@@ -42,7 +42,7 @@
             android:layout_above="@+id/button1"
             android:layout_alignParentLeft="true"
             android:background="@drawable/rounded_corner_box"
-            android:text="Button" android:textSize="30"/>
+            android:text="Button" android:textSize="20dp" android:layout_margin="5dp"/>
 
         <Button
             android:id="@+id/button4"
@@ -51,7 +51,7 @@
             android:layout_alignBottom="@+id/button3"
             android:layout_alignParentRight="true"
             android:background="@drawable/rounded_corner_box"
-            android:text="Button" android:textSize="30"/>
+            android:text="Button" android:textSize="20dp" android:layout_margin="5dp"/>
 
         <ProgressBar
             android:id="@+id/progressBar1"
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 
