@@ -61,6 +61,15 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
 
+        <TextView
+            android:id="@+id/targetcity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge" android:background="@color/translucent_black"/>
+
     </RelativeLayout>
 
 </LinearLayout>

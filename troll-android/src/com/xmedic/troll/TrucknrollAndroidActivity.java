@@ -61,7 +61,7 @@ public class TrucknrollAndroidActivity extends Activity {
 			index++;
 		}
 		
-		mapView.setCenter(city);
+		mapView.setCenter(city, this);
 		mapView.setNearest(nearestCities);
 	}
 
