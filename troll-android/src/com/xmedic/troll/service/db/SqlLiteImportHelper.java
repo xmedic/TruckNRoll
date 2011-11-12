@@ -44,6 +44,10 @@ public class SqlLiteImportHelper {
                 values.put("latitude", columns[2].trim());
                 values.put("longitude", columns[3].trim());
                 values.put("population", columns[4].trim().replace(",", ""));
+                if (columns.length > 5) {
+                	values.put("x", columns[5].trim());
+                	values.put("y", columns[6].trim());
+                }
                 cities.insert(values);
             }
 
