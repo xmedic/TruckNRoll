@@ -43,6 +43,7 @@ public final class R {
         public static final int linearLayout2=0x7f060002;
         public static final int linearLayout3=0x7f060006;
         public static final int map=0x7f06000a;
+        public static final int movingtruck=0x7f060013;
         public static final int progressBar1=0x7f06000f;
         public static final int relativeLayout1=0x7f060000;
         public static final int xmediclogo=0x7f060011;
