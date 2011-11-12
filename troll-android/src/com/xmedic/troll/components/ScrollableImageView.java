@@ -24,8 +24,8 @@ public class ScrollableImageView extends ImageView {
     	super(context, set);
 		 paint = new Paint();
 		 paint.setColor(Color.BLACK);
-		   int maxX = (int)((2400 / 2) - (840 / 2));
-	        int maxY = (int)((1600 / 2) - (480 / 2));
+		   int maxX = (int)((2119 / 2) - (1024 / 2));
+	        int maxY = (int)((1619 / 2) - (600 / 2));
 
 	        // set scroll limits
 	        maxLeft = (maxX * -1);
@@ -161,7 +161,13 @@ public class ScrollableImageView extends ImageView {
          }
        
          Log.d("Scroll", "CurrentX " + currentX + " CurrentY " + currentY);
-
+         Log.d("Scroll", "TotalX " + totalX + " TotalY " + totalY);
          return true;
+	}
+
+	public void setCurrent(int x, int y) {
+		totalX = x;
+		totalY = y;
+		
 	}
 }
