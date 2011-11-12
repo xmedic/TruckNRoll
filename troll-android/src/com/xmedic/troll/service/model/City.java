@@ -14,9 +14,7 @@ public class City {
 	
 	private Double longitude;
 	
-	private Integer x;
-	
-	private Integer y;
+	private Point point;
 	
 	private Long population;
 	
@@ -64,20 +62,12 @@ public class City {
 		this.longitude = longitude;
 	}
 
-	public Integer getX() {
-		return x;
+	public Point getPoint() {
+		return point;
 	}
 
-	public void setX(Integer x) {
-		this.x = x;
-	}
-
-	public Integer getY() {
-		return y;
-	}
-
-	public void setY(Integer y) {
-		this.y = y;
+	public void setPoint(Point point) {
+		this.point = point;
 	}
 
 	public Long getPopulation() {

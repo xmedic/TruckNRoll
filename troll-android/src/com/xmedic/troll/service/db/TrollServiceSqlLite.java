@@ -26,13 +26,6 @@ public class TrollServiceSqlLite implements TrollService {
 	 }
 
 
-//	public List<City> getCities() {
-//		String query = "SELECT c.* FROM city c WHERE c.country = ?";
-//		Cursor cursor = db.rawQuery(query, new String[] {"LT"} );
-//		return DataTransfomer.toList(cursor, DoCity.instance);
-//    }
-
-
 	public List<Level> getLevels() {
 		return new ArrayList<Level>();
 	}
