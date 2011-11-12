@@ -9,9 +9,9 @@ public class Level {
 	
 	private String description;
 	
-	private City start;
+	private String startCityId;
 	
-	private City goal;
+	private String goalCityId;
 
 
 	public String getId() {
@@ -38,20 +38,20 @@ public class Level {
 		this.description = description;
 	}
 
-	public City getStart() {
-		return start;
+	public String getStartCityId() {
+		return startCityId;
 	}
 
-	public void setStart(City start) {
-		this.start = start;
+	public void setStartCityId(String startCityId) {
+		this.startCityId = startCityId;
 	}
 
-	public City getGoal() {
-		return goal;
+	public String getGoalCityId() {
+		return goalCityId;
 	}
 
-	public void setGoal(City goal) {
-		this.goal = goal;
+	public void setGoalCityId(String goalCityId) {
+		this.goalCityId = goalCityId;
 	}
-	
+
 }

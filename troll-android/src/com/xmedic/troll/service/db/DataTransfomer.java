@@ -8,6 +8,7 @@ import java.util.Set;
 import android.database.Cursor;
 
 import com.xmedic.troll.service.model.City;
+import com.xmedic.troll.service.model.Level;
 
 public class DataTransfomer {
         
@@ -92,8 +93,31 @@ public class DataTransfomer {
                     
                     return city;
 				}
-
-
                 
+        }
+        
+
+        public static class DoLevel implements Do<Level> {
+            
+            public final static DoLevel instance = new DoLevel();
+            
+            public static String[] columns = new String[] {
+            	"id", 
+            	"name", 
+            	"description", 
+            	"startCityId", 
+            	"fromCityId"};
+
+			public Level get(Cursor cursor) {
+                Level level = new Level();
+
+                level.setId(cursor.getString(0));
+                level.setName(cursor.getString(1));
+                level.setDescription(cursor.getString(2));
+                level.setStartCityId(cursor.getString(3));
+                level.setGoalCityId(cursor.getString(4));
+               
+                return level;
+			}
         }
 }
