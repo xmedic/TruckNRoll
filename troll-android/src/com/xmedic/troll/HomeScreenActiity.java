@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 /**
  * @author vincentas
@@ -19,6 +17,8 @@ import android.widget.RelativeLayout;
  */
 public class HomeScreenActiity extends Activity {
 
+	public static final String LEVEL_ID = "levelId";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +32,9 @@ public class HomeScreenActiity extends Activity {
         buttonLevel4.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-				startActivity(new Intent(HomeScreenActiity.this, TrucknrollAndroidActivity.class));
+				Intent intent = new Intent(HomeScreenActiity.this, TrucknrollAndroidActivity.class);
+				intent.putExtra(LEVEL_ID, "1");
+				startActivity(intent);
 				
 			}
 		});
