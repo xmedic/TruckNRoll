@@ -11,6 +11,7 @@ import com.xmedic.troll.service.model.Level;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
@@ -56,6 +57,12 @@ public class TrucknrollAndroidActivity extends Activity {
 		Log.d("moveToCity", city.getId());
 		Log.d("moveToCity", "neares city size " + nearestCities.size() + " id used " + city.getId());
 		int index = 0;
+		
+		button1.setVisibility(View.INVISIBLE);
+		button2.setVisibility(View.INVISIBLE);
+		button3.setVisibility(View.INVISIBLE);
+		button4.setVisibility(View.INVISIBLE);
+		
 		for(City nearestCity : nearestCities) {
 			setChoice(nearestCity, index);	
 			index++;
@@ -70,20 +77,21 @@ public class TrucknrollAndroidActivity extends Activity {
 		Button buttonToUse = null;
 		if(index == 0) {
 			buttonToUse =  button3;
-		} else if(index == 1) {
+		} else  if(index == 1) {
 			buttonToUse = button4;
-		}else if(index == 2) {
+		} else   if(index == 2) {
 			buttonToUse = button1;
-		}else if(index == 3) {
+		} else  if(index == 3) {
 			buttonToUse = button2;
-		}
+		} 
+		
 		if(buttonToUse != null) {
 			buttonToUse.setText(city.getName());
 			buttonToUse.setTag(city.getId());
+			buttonToUse.setVisibility(View.VISIBLE);
 		}
 	}
 	
-
 	private void citySelected(String cityId) {
 		moveToCity(service.getCity(cityId));
 		

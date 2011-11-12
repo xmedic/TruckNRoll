@@ -43,6 +43,7 @@ public class ScrollableImageView extends ImageView {
     	super(context, set);
 		 blackPaint = new Paint();
 		 blackPaint.setColor(Color.BLACK);
+		 blackPaint.setTextSize(30);
 		 
 		 bluePaint = new Paint();
 		 bluePaint.setColor(Color.BLUE);
@@ -54,6 +55,7 @@ public class ScrollableImageView extends ImageView {
 		super(context);
 		 blackPaint = new Paint();
 		 blackPaint.setColor(Color.BLACK);
+		 blackPaint.setTextSize(30);
 		 
 		 bluePaint = new Paint();
 		 bluePaint.setColor(Color.BLUE);
@@ -78,7 +80,6 @@ public class ScrollableImageView extends ImageView {
 			for(City nearestCity : nearestCities) {
 				Point coordinates = MapMath.toDrawPoint(nearestCity.getPoint(), maxX, maxY);
 				canvas.drawCircle(coordinates.x, coordinates.y, 10, bluePaint);
-				canvas.drawText(nearestCity.getName(), coordinates.x - 20, coordinates.y - 10, bluePaint);
 			}
 		}
 	}
