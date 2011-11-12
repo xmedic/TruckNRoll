@@ -9,9 +9,12 @@ import java.util.TimerTask;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.TranslateAnimation;
 
 /**
  * @author vincentas
@@ -42,5 +45,17 @@ public class SplashScreenActivity extends Activity {
 				startActivity(new Intent(SplashScreenActivity.this, HomeScreenActiity.class));				
 			}
 		}, 3000);
+        
+        
+        Display display = getWindowManager().getDefaultDisplay(); 
+        int width = display.getWidth();
+        int height = display.getHeight();
+        
+        View truckImage = findViewById(R.id.movingtruck);
+        TranslateAnimation animation = new TranslateAnimation(0, -width, 0, 0);
+        animation.setFillAfter(true);
+        animation.setDuration(3000);
+        animation.setInterpolator(new AccelerateInterpolator());
+        truckImage.startAnimation(animation);
     }
 }

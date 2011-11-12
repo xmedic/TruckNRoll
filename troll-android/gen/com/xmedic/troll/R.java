@@ -17,14 +17,15 @@ public final class R {
         public static final int appcamp=0x7f020000;
         public static final int asfaltas=0x7f020001;
         public static final int background=0x7f020002;
-        public static final int disabled=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int icon=0x7f020005;
-        public static final int lietuvosplikaszemelapis=0x7f020006;
-        public static final int normal=0x7f020007;
-        public static final int pressed=0x7f020008;
-        public static final int rounded_corner_box=0x7f020009;
-        public static final int xmediclogo=0x7f02000a;
+        public static final int backrepeat=0x7f020003;
+        public static final int disabled=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int icon=0x7f020006;
+        public static final int lietuvosplikaszemelapis=0x7f020007;
+        public static final int normal=0x7f020008;
+        public static final int pressed=0x7f020009;
+        public static final int rounded_corner_box=0x7f02000a;
+        public static final int xmediclogo=0x7f02000b;
     }
     public static final class id {
         public static final int button1=0x7f06000b;
@@ -42,6 +43,7 @@ public final class R {
         public static final int linearLayout2=0x7f060002;
         public static final int linearLayout3=0x7f060006;
         public static final int map=0x7f06000a;
+        public static final int movingtruck=0x7f060013;
         public static final int progressBar1=0x7f06000f;
         public static final int relativeLayout1=0x7f060000;
         public static final int xmediclogo=0x7f060011;
