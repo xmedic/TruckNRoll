@@ -61,7 +61,17 @@ public class TrollServiceSqlLite implements TrollService {
         		new String[] {cityId});
 
         List<City> nearby = DataTransfomer.toList(cursor, DoCity.instance);
-		return (nearby.size() <= MAX_CHOICES) ? nearby : minimize(nearby, goalId);
+		return randomize(minimize(nearby, goalId));
+	}
+
+	private List<City> randomize(List<City> nearby) {
+		List<City> temp = new ArrayList<City>();
+		while (nearby.size() != 0) {
+			City city = nearby.get((int) Math.round(Math.random() * (nearby.size()-1)));
+			temp.add(city);
+			nearby.remove(city);
+		}
+		return temp;
 	}
 
 	private List<City> minimize(List<City> nearby, String goalId) {
