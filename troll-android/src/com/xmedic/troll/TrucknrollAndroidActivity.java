@@ -51,7 +51,7 @@ public class TrucknrollAndroidActivity extends Activity {
 
 	private void moveToCity(City city) {
 		
-		List<City> nearestCities = service.getNearbyCities(city.getId());
+		List<City> nearestCities = service.getNearbyCities(city.getId(), level.getGoalCityId());
 		
 		Log.d("moveToCity", city.getId());
 		Log.d("moveToCity", "neares city size " + nearestCities.size() + " id used " + city.getId());
