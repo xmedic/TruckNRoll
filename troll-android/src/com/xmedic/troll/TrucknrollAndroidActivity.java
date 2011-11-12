@@ -3,10 +3,12 @@ package com.xmedic.troll;
 import com.xmedic.troll.components.ScrollableImageView;
 import com.xmedic.troll.service.TrollService;
 import com.xmedic.troll.service.db.TrollServiceSqlLite;
+import com.xmedic.troll.service.model.City;
 import com.xmedic.troll.service.model.Level;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
@@ -31,11 +33,21 @@ public class TrucknrollAndroidActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.main);
+        service = new TrollServiceSqlLite(getBaseContext());
+        
         loadComponents();
         initGraphics();
         level = service.getLevel(getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID));
-        
+        moveToCity(level.getStart());
     }
+
+	private void moveToCity(City city) {
+		mapView.setCenter(city);
+		mapView.setNearest(service.getNearbyCities(city.getId()));
+	}
 
 	private void loadComponents() {
        button1 = (Button)findViewById(R.id.button1);
@@ -47,11 +59,7 @@ public class TrucknrollAndroidActivity extends Activity {
 	}
 
 	private void initGraphics() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.main);
         Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         mapView.setScreenSize(d.getWidth(), d.getHeight());
 	}
-
 }

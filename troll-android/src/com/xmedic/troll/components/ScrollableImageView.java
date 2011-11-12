@@ -1,9 +1,15 @@
 package com.xmedic.troll.components;
 
+import java.util.List;
+
+import com.xmedic.troll.service.MapMath;
+import com.xmedic.troll.service.model.City;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -18,8 +24,20 @@ public class ScrollableImageView extends ImageView {
     int maxRight;
     int maxTop;
     int maxBottom;
+    
+    int maxX;
+    int maxY;
+    
     Paint paint;
+    
+    int canvasOffsetX;
+    int canvasOffsetY;
 
+    private City city;
+    private List<City> nearestCities;
+	private int screenHeight;
+	private int screenWidth;
+    
     public ScrollableImageView(Context context, AttributeSet set) {
     	super(context, set);
 		 paint = new Paint();
@@ -37,16 +55,17 @@ public class ScrollableImageView extends ImageView {
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
 		super.onScrollChanged(l, t, oldl, oldt);
-		Log.d("TAG", "Scrolled to l" + l + " Scrolled to l" + t);
 	}
 	
 	@Override
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
-		Log.d("TAG", "onDraw");
-		 canvas.drawLine(0, 0, 200, 200, paint);
-         canvas.drawLine(200, 0, 0, 200, paint);
+
+		if(city != null) {
+			Point coordinates = MapMath.toDrawPoint(city.getPoint(), maxX, maxY);
+			canvas.drawCircle(coordinates.x, coordinates.y, 10, paint);
+		}
 	}
 	
 	@Override
@@ -145,9 +164,6 @@ public class ScrollableImageView extends ImageView {
 
                  
          }
-       
-         Log.d("Scroll", "CurrentX " + currentX + " CurrentY " + currentY);
-         Log.d("Scroll", "TotalX " + totalX + " TotalY " + totalY);
          return true;
 	}
 
@@ -158,18 +174,31 @@ public class ScrollableImageView extends ImageView {
 	}
 
 	public void setScreenSize(int width, int height) {
-		int maxX = (int) ((2400 / 2) - (width / 2));
-		int maxY = (int) ((1600 / 2) - (height / 2));
+		this.screenWidth = width;
+		this.screenHeight = height;
+		maxX = (int) ((MapMath.MAP_WIDTH / 2) - (width / 2));
+		maxY = (int) ((MapMath.MAP_HEIGHT / 2) - (height / 2));
 
 		// set scroll limits
 		maxLeft = (maxX * -1);
 		maxRight = maxX;
 		maxTop = (maxY * -1);
 		maxBottom = maxY;
+		
+		
 	}
 
-	public void moveTo(int x, int y) {
-		scrollTo(x, y);
-		setCurrent(x, y);
+	public void moveTo(Point point) {
+		scrollTo(point.x, point.y);
+		setCurrent(point.x, point.y);
+	}
+
+	public void setCenter(City city) {
+		moveTo(city.getExternalPoint());
+		this.city = city;
+	}
+
+	public void setNearest(List<City> nearestCities) {
+		this.nearestCities = nearestCities;
 	}
 }
