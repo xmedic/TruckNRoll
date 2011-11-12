@@ -168,7 +168,7 @@ public class ScrollableImageView extends ImageView {
 		maxBottom = maxY;
 	}
 
-	public void moveTo(int x, int y) {
+	public void moveTo(final int x, final int y) {
 		scrollTo(x, y);
 		setCurrent(x, y);
 	}
