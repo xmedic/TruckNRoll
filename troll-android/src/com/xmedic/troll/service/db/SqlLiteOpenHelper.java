@@ -56,7 +56,8 @@ public class SqlLiteOpenHelper extends SQLiteOpenHelper {
 		 db.execSQL("DROP TABLE IF EXISTS " + SqlLiteOpenHelper.LEVEL + ";");
 	     onCreate(db);
 	}
-	
+
+
 	 private static class DDL {
 
          public static String DB_NAME = "trucknroll";
@@ -82,8 +83,8 @@ public class SqlLiteOpenHelper extends SQLiteOpenHelper {
                          "id           TEXT PRIMARY KEY, " +
                          "name         TEXT PRIMARY KEY, " +
                          "description  TEXT PRIMARY KEY, " +
-        				 
-                         "to        	 TEXT NOT NULL)";
+        				 "startCityId  TEXT PRIMARY KEY, " +
+        				 "goalCityId   TEXT PRIMARY KEY)";
 	 }
 
 }

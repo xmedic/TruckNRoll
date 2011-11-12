@@ -1,5 +1,7 @@
 package com.xmedic.troll.service.model;
 
+import android.graphics.Point;
+
 
 public class City {
 
