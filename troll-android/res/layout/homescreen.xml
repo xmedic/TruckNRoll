@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:background="@drawable/background">
+        android:layout_height="match_parent" android:background="@drawable/backrepeat">
 
         <LinearLayout
             android:id="@+id/linearLayout1"
@@ -29,21 +29,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="Button" />
+                    android:text="1" android:background="@drawable/normal" android:textStyle="bold" android:textSize="10pt"/>
 
                 <Button
                     android:id="@+id/buttonLevel2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="Button" />
+                    android:text="2" android:background="@drawable/normal" android:textStyle="bold" android:textSize="10pt"/>
 
                 <Button
                     android:id="@+id/buttonLevel3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="Button" />
+                    android:text="3" android:background="@drawable/normal" android:textStyle="bold" android:textSize="10pt"/>
             </LinearLayout>
 
             <LinearLayout
@@ -56,21 +56,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="Button" />
+                    android:text="4" android:background="@drawable/normal" android:textStyle="bold" android:textSize="10pt"/>
 
                 <Button
                     android:id="@+id/buttonLevel5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="Button" />
+                    android:text="5" android:background="@drawable/normal" android:textStyle="bold" android:textSize="10pt"/>
 
                 <Button
                     android:id="@+id/buttonLevel6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="Button" />
+                    android:text="6" android:background="@drawable/disabled" android:textStyle="bold" android:textSize="10pt" android:textColor="@color/translucent_black"/>
             </LinearLayout>
         </LinearLayout>
 

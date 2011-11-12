@@ -31,10 +31,20 @@ public class TrucknrollAndroidActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadComponents();
         initGraphics();
-        level = service.getLevel(getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID));
+        loadComponents();
+
+        Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        mapView.setScreenSize(d.getWidth(), d.getHeight());
         
+//        level = service.getLevel(getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID));
+       
+        button4.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				mapView.moveTo(200, 200);				
+			}
+		});
     }
 
 	private void loadComponents() {
@@ -43,6 +53,8 @@ public class TrucknrollAndroidActivity extends Activity {
        button3 = (Button)findViewById(R.id.button3);
        button4 = (Button)findViewById(R.id.button4);
        
+       
+       
        mapView = (ScrollableImageView)findViewById(R.id.map);
 	}
 
@@ -50,8 +62,8 @@ public class TrucknrollAndroidActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.main);
-        Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-        mapView.setScreenSize(d.getWidth(), d.getHeight());
+        
+        
 	}
 
 }
