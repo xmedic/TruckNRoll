@@ -49,7 +49,7 @@ public class TrucknrollAndroidActivity extends Activity {
         
         loadComponents();
         initGraphics();
-        level = service.getLevel("0");//getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID)
+        level = service.getLevel(getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID));
         moveToCity(service.getCity(level.getStartCityId()));
         
         City goal = service.getCity(level.getGoalCityId());
