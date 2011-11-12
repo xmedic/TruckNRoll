@@ -28,17 +28,23 @@ public class HomeScreenActiity extends Activity {
         
         setContentView(R.layout.homescreen);
         
-        Button buttonLevel4 = (Button) findViewById(R.id.buttonLevel4);
-        buttonLevel4.setOnClickListener(new View.OnClickListener() {
-			
+        setLevel(R.id.buttonLevel1, "1");
+        setLevel(R.id.buttonLevel2, "2");
+        setLevel(R.id.buttonLevel3, "3");
+        setLevel(R.id.buttonLevel4, "4");
+        setLevel(R.id.buttonLevel5, "5");        
+	}
+
+	private void setLevel(int buttonId, final String level) {
+		Button button = (Button) findViewById(buttonId);
+		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(HomeScreenActiity.this, TrucknrollAndroidActivity.class);
-				intent.putExtra(LEVEL_ID, "1");
+				intent.putExtra(LEVEL_ID, level);
 				startActivity(intent);
 				
 			}
 		});
-        
 	}
 
 	
