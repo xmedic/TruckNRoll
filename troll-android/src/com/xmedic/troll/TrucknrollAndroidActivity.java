@@ -26,6 +26,7 @@ public class TrucknrollAndroidActivity extends Activity {
         Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         
         
+        
         Button button = (Button)findViewById(R.id.button1);
         final ScrollableImageView imageView = (ScrollableImageView)findViewById(R.id.map);
         imageView.setScreenSize(d.getWidth(), d.getHeight());
