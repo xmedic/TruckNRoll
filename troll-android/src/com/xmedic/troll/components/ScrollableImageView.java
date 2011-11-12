@@ -5,7 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
@@ -23,29 +25,15 @@ public class ScrollableImageView extends ImageView {
     public ScrollableImageView(Context context, AttributeSet set) {
     	super(context, set);
 		 paint = new Paint();
-		 paint.setColor(Color.BLACK);
-		   int maxX = (int)((2119 / 2) - (1024 / 2));
-	        int maxY = (int)((1619 / 2) - (600 / 2));
-
-	        // set scroll limits
-	        maxLeft = (maxX * -1);
-	        maxRight = maxX;
-	       maxTop = (maxY * -1);
-	        maxBottom = maxY;
     }
+    
+    
     
 	public ScrollableImageView(Context context) {
 		super(context);
 		 paint = new Paint();
 		 paint.setColor(Color.BLACK);
-		   int maxX = (int)((2400 / 2) - (840 / 2));
-	        int maxY = (int)((1600 / 2) - (480 / 2));
 
-	        // set scroll limits
-	        maxLeft = (maxX * -1);
-	        maxRight = maxX;
-	       maxTop = (maxY * -1);
-	        maxBottom = maxY;
 	}
 	
 	@Override
@@ -169,5 +157,17 @@ public class ScrollableImageView extends ImageView {
 		totalX = x;
 		totalY = y;
 		
+	}
+
+
+	public void setScreenSize(int width, int height) {
+		int maxX = (int) ((2400 / 2) - (width / 2));
+		int maxY = (int) ((1600 / 2) - (height / 2));
+
+		// set scroll limits
+		maxLeft = (maxX * -1);
+		maxRight = maxX;
+		maxTop = (maxY * -1);
+		maxBottom = maxY;
 	}
 }

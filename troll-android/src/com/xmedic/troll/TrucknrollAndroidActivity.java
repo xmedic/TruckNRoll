@@ -3,12 +3,13 @@ package com.xmedic.troll;
 import com.xmedic.troll.components.ScrollableImageView;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.webkit.WebChromeClient.CustomViewCallback;
 import android.widget.Button;
 
 public class TrucknrollAndroidActivity extends Activity {
@@ -22,8 +23,12 @@ public class TrucknrollAndroidActivity extends Activity {
 
         setContentView(R.layout.main);
         
+        Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        
+        
         Button button = (Button)findViewById(R.id.button1);
         final ScrollableImageView imageView = (ScrollableImageView)findViewById(R.id.map);
+        imageView.setScreenSize(d.getWidth(), d.getHeight());
         button.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
