@@ -16,16 +16,19 @@ reader.close()
 
 
 reader = new BufferedReader(new FileReader("LT-roads.txt"))
-writer = new FileWriter("roads.txt")
+writer = new FileWriter("road.txt")
 reader.eachLine{ line ->
 
   newLine = ""
   for (city in line.split(";")) {
-        newLine = newLine + ";" + cities[city]
+        if (newLine.size() > 0) {
+            newLine = newLine + ";"
+        }
+        newLine = newLine + cities[city]
   }
 
   println newLine
-  writer.write("$newLine")
+  writer.write("$newLine\n")
 }
 writer.close()
 reader.close()

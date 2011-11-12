@@ -7,9 +7,15 @@ import android.util.Log;
 
 public class SqlLiteOpenHelper extends SQLiteOpenHelper {
 
+	
 	 private static final String LOG_TAG = "troll-db";
 
 	 public static final String CITY = "city";
+	 
+	 public static final String ROAD = "road";
+	 
+	 public static final String LEVEL = "level";
+
 	 
 	 private Context context;
 
@@ -25,6 +31,8 @@ public class SqlLiteOpenHelper extends SQLiteOpenHelper {
 		 Log.i(LOG_TAG, "Creating initial database");
 		    try {
 		    	db.execSQL(DDL.CITY);
+		    	db.execSQL(DDL.ROAD);
+		    	db.execSQL(DDL.LEVEL);
 		    } catch (Exception e) {
 		    	Log.e(LOG_TAG, e.getMessage());
 		    }
@@ -43,7 +51,9 @@ public class SqlLiteOpenHelper extends SQLiteOpenHelper {
 				"Upgrading database from version %s to %s which will destroy all old data", 
 				oldVersion, 
 				newVersion));
-		 db.execSQL("DROP TABLE IF EXISTS city;");
+		 db.execSQL("DROP TABLE IF EXISTS " + SqlLiteOpenHelper.CITY + ";");
+		 db.execSQL("DROP TABLE IF EXISTS " + SqlLiteOpenHelper.ROAD + ";");
+		 db.execSQL("DROP TABLE IF EXISTS " + SqlLiteOpenHelper.LEVEL + ";");
 	     onCreate(db);
 	}
 	
@@ -60,7 +70,17 @@ public class SqlLiteOpenHelper extends SQLiteOpenHelper {
                          "country        TEXT NOT NULL, " +
                          "latitude       REAL NOT NULL, " +
                          "longitude      REAL NOT NULL, " +
-                         "population     INTEGER ";
+                         "population     INTEGER)";
+         
+         public static String ROAD = 
+        		 "CREATE TABLE " + SqlLiteOpenHelper.ROAD + " (" +
+                         "fromCityId           TEXT NOT NULL, " +
+                         "toCityId        	   TEXT NOT NULL)";
+         
+         public static String LEVEL = 
+        		 "CREATE TABLE " + SqlLiteOpenHelper.LEVEL + " (" +
+                         "from           TEXT NOT NULL, " +
+                         "to        	  TEXT NOT NULL)";
 	 }
 
 }

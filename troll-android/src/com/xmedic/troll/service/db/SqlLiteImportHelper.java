@@ -19,9 +19,11 @@ public class SqlLiteImportHelper {
 			SQLiteDatabase db, 
 			Context context) {
 
-		insertCities(db, getReader(context, "LT.txt"));
+		insertCities(db, getReader(context, "city.txt"));
+		insertRoads(db, getReader(context, "road.txt"));
 	}
 
+	
 	private static void insertCities(
 			SQLiteDatabase db,
 			BufferedReader reader) {
@@ -53,6 +55,37 @@ public class SqlLiteImportHelper {
         }       
 		
 	}
+
+
+	private static void insertRoads(SQLiteDatabase db, BufferedReader reader) {
+		DatabaseUtils.InsertHelper cities = new InsertHelper(db, SqlLiteOpenHelper.CITY);
+
+		try {
+            String line = null;
+
+            ContentValues values = new ContentValues();
+            while ((line = reader.readLine()) != null) {
+                String[] columns = line.split(";");
+                values.clear();
+                values.put("country", "LT");
+                values.put("id", columns[0].trim());
+                values.put("name", columns[1].trim());
+                values.put("latitude", columns[2].trim());
+                values.put("longitude", columns[3].trim());
+                values.put("population", columns[4].trim().replace(",", ""));
+                cities.insert(values);
+            }
+
+        } catch (Exception e) {
+            Log.e(LOG_TAG, e.getMessage(), e);
+
+        } finally {
+            cities.close();
+            closeQuietly(reader);
+        }       
+		
+	}
+	
 
 	private static BufferedReader getReader(Context context, String asset) {
 		try {
