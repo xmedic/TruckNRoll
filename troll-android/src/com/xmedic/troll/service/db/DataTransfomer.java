@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import android.database.Cursor;
+import android.graphics.Point;
 
 import com.xmedic.troll.service.model.City;
 import com.xmedic.troll.service.model.Level;
@@ -79,7 +80,9 @@ public class DataTransfomer {
                 	"country", 
                 	"latitude", 
                 	"longitude", 
-                	"population"};
+                	"population",
+                	"x",
+                	"y"};
 
 				public City get(Cursor cursor) {
                     City city = new City();
@@ -91,6 +94,13 @@ public class DataTransfomer {
                     city.setLongitude(cursor.getDouble(4));
                     city.setPopulation(cursor.getLong(5));
                     
+                    if (!cursor.isNull(6)) {
+                    	Point point = new Point();
+                    	point.x = cursor.getInt(6);
+                    	point.y = cursor.getInt(7);
+                    	city.setPoint(point);
+                    }
+
                     return city;
 				}
                 

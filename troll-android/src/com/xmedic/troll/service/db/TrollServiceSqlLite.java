@@ -34,14 +34,6 @@ public class TrollServiceSqlLite implements TrollService {
         return levels;
 	}
 
-	public City getCity(String cityId) {
-        Cursor cursor = db.rawQuery(
-        		"SELECT id, name, country, latitude, longitude, population " +
-        		"FROM city WHERE id = ?", 
-        		new String[] {cityId});
-        return DataTransfomer.to(cursor, DoCity.instance);
-	}
-
 	public Level getLevel(String levelId) {
         Cursor cursor = db.rawQuery(
         		"SELECT id, name, description, startCityId, goalCityId " +
@@ -50,11 +42,19 @@ public class TrollServiceSqlLite implements TrollService {
         return DataTransfomer.to(cursor, DoLevel.instance);
 	}
 
+	public City getCity(String cityId) {
+        Cursor cursor = db.rawQuery(
+        		"SELECT id, name, country, latitude, longitude, population, x, y " +
+        		"FROM city WHERE id = ?", 
+        		new String[] {cityId});
+        return DataTransfomer.to(cursor, DoCity.instance);
+	}
+
 	public List<City> getNearbyCities(String cityId) {
         Cursor cursor = db.rawQuery(
-        		"SELECT c.id, c.name, c.country, c.latitude, c.longitude, c.population " +
+        		"SELECT c.id, c.name, c.country, c.latitude, c.longitude, c.population, c.x, c.y " +
         				"FROM city c INNER JOIN road r ON c.id = r.fromCityId " +
-        				"WHERE c.id = ?", 
+        				"WHERE r.fromCityId = ?", 
         		new String[] {cityId});
         return DataTransfomer.toList(cursor, DoCity.instance);
 	}

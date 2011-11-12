@@ -71,7 +71,9 @@ public class SqlLiteOpenHelper extends SQLiteOpenHelper {
                          "country        TEXT NOT NULL, " +
                          "latitude       REAL NOT NULL, " +
                          "longitude      REAL NOT NULL, " +
-                         "population     INTEGER)";
+                         "population     INTEGER NOT NULL," +
+                         "x				 INTEGER," +
+                         "y				 INTEGER)";
          
          public static String ROAD = 
         		 "CREATE TABLE " + SqlLiteOpenHelper.ROAD + " (" +
