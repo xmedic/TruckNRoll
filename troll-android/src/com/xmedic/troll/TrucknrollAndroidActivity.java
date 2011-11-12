@@ -1,7 +1,5 @@
 package com.xmedic.troll;
 
-import com.xmedic.troll.components.ScrollableImageView;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +9,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+
+import com.xmedic.troll.components.ScrollableImageView;
 
 public class TrucknrollAndroidActivity extends Activity {
     /** Called when the activity is first created. */
