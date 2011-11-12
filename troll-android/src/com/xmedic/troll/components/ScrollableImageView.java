@@ -157,7 +157,6 @@ public class ScrollableImageView extends ImageView {
 		
 	}
 
-
 	public void setScreenSize(int width, int height) {
 		int maxX = (int) ((2400 / 2) - (width / 2));
 		int maxY = (int) ((1600 / 2) - (height / 2));
@@ -167,5 +166,10 @@ public class ScrollableImageView extends ImageView {
 		maxRight = maxX;
 		maxTop = (maxY * -1);
 		maxBottom = maxY;
+	}
+
+	public void moveTo(int x, int y) {
+		scrollTo(x, y);
+		setCurrent(x, y);
 	}
 }

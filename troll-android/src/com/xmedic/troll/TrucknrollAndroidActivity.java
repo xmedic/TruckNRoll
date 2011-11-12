@@ -32,9 +32,7 @@ public class TrucknrollAndroidActivity extends Activity {
         button.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				imageView.scrollTo(-202, -462);
-				imageView.setCurrent(-202, -462);
-				
+				imageView.moveTo(-202, -462);
 			}
 		});
         
