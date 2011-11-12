@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent" android:background="@drawable/background">
 
         <LinearLayout
             android:id="@+id/linearLayout1"
@@ -25,21 +25,21 @@
                 android:layout_height="wrap_content" >
 
                 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/buttonLevel1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:text="Button" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/buttonLevel2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:text="Button" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/buttonLevel3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -52,21 +52,21 @@
                 android:layout_height="match_parent" >
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/buttonLevel4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:text="Button" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/buttonLevel5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:text="Button" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/buttonLevel6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"

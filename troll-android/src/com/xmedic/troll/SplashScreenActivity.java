@@ -3,6 +3,9 @@
  */
 package com.xmedic.troll;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,5 +36,13 @@ public class SplashScreenActivity extends Activity {
 				startActivity(new Intent(SplashScreenActivity.this, HomeScreenActiity.class));
 			}
 		});
+        
+        new Timer().schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				startActivity(new Intent(SplashScreenActivity.this, HomeScreenActiity.class));				
+			}
+		}, 2000);
     }
 }
