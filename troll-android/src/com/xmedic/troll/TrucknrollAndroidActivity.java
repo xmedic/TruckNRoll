@@ -1,5 +1,10 @@
 package com.xmedic.troll;
 
+import com.xmedic.troll.components.ScrollableImageView;
+import com.xmedic.troll.service.TrollService;
+import com.xmedic.troll.service.db.TrollServiceSqlLite;
+import com.xmedic.troll.service.model.Level;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -13,29 +18,40 @@ import android.widget.Button;
 import com.xmedic.troll.components.ScrollableImageView;
 
 public class TrucknrollAndroidActivity extends Activity {
-    /** Called when the activity is first created. */
+
+	private Button button1;
+	private Button button2;
+	private Button button3;
+	private Button button4;
+	private ScrollableImageView mapView;
+	
+	private Level level;
+	private TrollService service;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.main);
-        
-        Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-        
-        
-        
-        Button button = (Button)findViewById(R.id.button1);
-        final ScrollableImageView imageView = (ScrollableImageView)findViewById(R.id.map);
-        imageView.setScreenSize(d.getWidth(), d.getHeight());
-        button.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				imageView.moveTo(-202, -462);
-			}
-		});
+        loadComponents();
+        initGraphics();
+        level = service.getLevel(getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID));
         
     }
+
+	private void loadComponents() {
+       button1 = (Button)findViewById(R.id.button1);
+       button2 = (Button)findViewById(R.id.button2);
+       button3 = (Button)findViewById(R.id.button3);
+       button4 = (Button)findViewById(R.id.button4);
+       
+       mapView = (ScrollableImageView)findViewById(R.id.map);
+	}
+
+	private void initGraphics() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.main);
+        Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        mapView.setScreenSize(d.getWidth(), d.getHeight());
+	}
+
 }
