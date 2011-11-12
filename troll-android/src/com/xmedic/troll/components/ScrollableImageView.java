@@ -1,6 +1,9 @@
 package com.xmedic.troll.components;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.xmedic.troll.service.MapMath;
 import com.xmedic.troll.service.model.City;
@@ -30,7 +33,7 @@ public class ScrollableImageView extends ImageView {
     
     Paint blackPaint;
     Paint bluePaint;
-    
+    Paint linePaint;
     int canvasOffsetX;
     int canvasOffsetY;
 
@@ -38,29 +41,36 @@ public class ScrollableImageView extends ImageView {
     private List<City> nearestCities;
 	private int screenHeight;
 	private int screenWidth;
+	
+	List<Point> history = new ArrayList<Point>();
     
     public ScrollableImageView(Context context, AttributeSet set) {
     	super(context, set);
-		 blackPaint = new Paint();
-		 blackPaint.setColor(Color.BLACK);
-		 blackPaint.setTextSize(30);
-		 
-		 bluePaint = new Paint();
-		 bluePaint.setColor(Color.BLUE);
+    	setupLines();
     }
     
     
     
 	public ScrollableImageView(Context context) {
 		super(context);
+		setupLines();
+	}
+	
+	private void setupLines() {
 		 blackPaint = new Paint();
 		 blackPaint.setColor(Color.BLACK);
 		 blackPaint.setTextSize(30);
 		 
 		 bluePaint = new Paint();
 		 bluePaint.setColor(Color.BLUE);
+		 
+		 linePaint = new Paint();
+		 linePaint.setColor(Color.RED);
+		 linePaint.setStrokeWidth(5);
 	}
-	
+
+
+
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
 		super.onScrollChanged(l, t, oldl, oldt);
@@ -80,6 +90,16 @@ public class ScrollableImageView extends ImageView {
 			for(City nearestCity : nearestCities) {
 				Point coordinates = MapMath.toDrawPoint(nearestCity.getPoint(), maxX, maxY);
 				canvas.drawCircle(coordinates.x, coordinates.y, 10, bluePaint);
+			}
+		}
+		if(history.size() > 1) {
+			Point previous = null;
+			for(Point point : history) {
+				if(previous != null) {
+					Log.d("DRAW", "Prev x" +previous.x + " Prev y " + previous.y + " Px + "+point.x + " Py " + point.y);
+					canvas.drawLine(previous.x, previous.y, point.x, point.y, linePaint);
+				}
+				previous = point;
 			}
 		}
 	}
@@ -210,6 +230,7 @@ public class ScrollableImageView extends ImageView {
 	}
 
 	public void setCenter(City city) {
+		history.add(MapMath.toDrawPoint(city.getPoint(), maxX, maxY));
 		moveTo(city.getExternalPoint());
 		this.city = city;
 	}
