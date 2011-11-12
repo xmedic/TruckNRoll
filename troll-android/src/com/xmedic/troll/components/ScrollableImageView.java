@@ -3,11 +3,16 @@ package com.xmedic.troll.components;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
 import java.util.Set;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.xmedic.troll.service.MapMath;
 import com.xmedic.troll.service.model.City;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -224,14 +229,16 @@ public class ScrollableImageView extends ImageView {
 		
 	}
 
-	public void moveTo(Point point) {
+	public void moveTo(final Point point, Activity activity) {
 		scrollTo(point.x, point.y);
 		setCurrent(point.x, point.y);
 	}
 
-	public void setCenter(City city) {
+	public void setCenter(City city, Activity activity) {
 		history.add(MapMath.toDrawPoint(city.getPoint(), maxX, maxY));
-		moveTo(city.getExternalPoint());
+
+		moveTo(city.getExternalPoint(), activity);
+
 		this.city = city;
 	}
 

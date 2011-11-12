@@ -75,7 +75,7 @@ public class TrucknrollAndroidActivity extends Activity {
 			index++;
 		}
 		
-		mapView.setCenter(city);
+		mapView.setCenter(city, this);
 		mapView.setNearest(nearestCities);
 		
 		if(city.getId() == level.getGoalCityId()) {
@@ -130,7 +130,7 @@ public class TrucknrollAndroidActivity extends Activity {
        
        mapView = (ScrollableImageView)findViewById(R.id.map);
        
-       goalView = (TextView)findViewById(R.id.targetCity);
+       goalView = (TextView)findViewById(R.id.targetcity);
 	}
 
 	private void initGraphics() {
