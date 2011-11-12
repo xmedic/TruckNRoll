@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -30,6 +31,7 @@ public class TrucknrollAndroidActivity extends Activity {
 	private Button button3;
 	private Button button4;
 	private ScrollableImageView mapView;
+	private TextView goalView;
 	
 	private Level level;
 	private TrollService service;
@@ -48,6 +50,10 @@ public class TrucknrollAndroidActivity extends Activity {
         initGraphics();
         level = service.getLevel("0");//getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID)
         moveToCity(service.getCity(level.getStartCityId()));
+        
+        City goal = service.getCity(level.getGoalCityId());
+        goalView.setText("Goal: " + goal.getName());
+        
 
     }
 
@@ -123,6 +129,8 @@ public class TrucknrollAndroidActivity extends Activity {
        button4.setOnClickListener(citySelectedListener);
        
        mapView = (ScrollableImageView)findViewById(R.id.map);
+       
+       goalView = (TextView)findViewById(R.id.targetCity);
 	}
 
 	private void initGraphics() {
