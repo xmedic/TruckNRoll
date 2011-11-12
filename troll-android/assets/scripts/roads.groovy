@@ -21,7 +21,7 @@ reader.eachLine{ line ->
 
   newLine = ""
   for (city in line.split(";")) {
-        newLine = newLine + ";" + cities.get(city)
+        newLine = newLine + ";" + cities[city]
   }
 
   println newLine
