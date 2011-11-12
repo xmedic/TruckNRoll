@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.xmedic.troll.service.TrollService;
+import com.xmedic.troll.service.db.DataTransfomer.DoCity;
 import com.xmedic.troll.service.model.City;
 
 public class TrollServiceSqlLite implements TrollService {
