@@ -39,15 +39,22 @@ public class ScrollableImageView extends ImageView {
     Paint blackPaint;
     Paint bluePaint;
     Paint linePaint;
+    Paint goalPaint;
+	Paint initialCityPaint;
+    
     int canvasOffsetX;
     int canvasOffsetY;
 
     private City city;
+    private City goalCity;
+	private City initialCity;
+	
     private List<City> nearestCities;
 	private int screenHeight;
 	private int screenWidth;
 	
 	List<Point> history = new ArrayList<Point>();
+
     
     public ScrollableImageView(Context context, AttributeSet set) {
     	super(context, set);
@@ -70,8 +77,16 @@ public class ScrollableImageView extends ImageView {
 		 bluePaint.setColor(Color.BLUE);
 		 
 		 linePaint = new Paint();
-		 linePaint.setColor(Color.RED);
+		 linePaint.setColor(Color.GRAY);
 		 linePaint.setStrokeWidth(5);
+		 
+		 goalPaint = new Paint();
+		 goalPaint.setColor(Color.RED);
+		 goalPaint.setStrokeWidth(5);
+		 
+		 initialCityPaint  = new Paint();
+		 initialCityPaint.setColor(Color.CYAN);
+		 initialCityPaint.setStrokeWidth(5);
 	}
 
 
@@ -96,6 +111,14 @@ public class ScrollableImageView extends ImageView {
 				Point coordinates = MapMath.toDrawPoint(nearestCity.getPoint(), maxX, maxY);
 				canvas.drawCircle(coordinates.x, coordinates.y, 10, bluePaint);
 			}
+		}
+		if(goalCity != null) {
+			Point coordinates = MapMath.toDrawPoint(goalCity.getPoint(), maxX, maxY);
+			canvas.drawCircle(coordinates.x, coordinates.y, 6, goalPaint);
+		}
+		if(goalCity != null) {
+			Point coordinates = MapMath.toDrawPoint(initialCity.getPoint(), maxX, maxY);
+			canvas.drawCircle(coordinates.x, coordinates.y, 6, initialCityPaint);
 		}
 		if(history.size() > 1) {
 			Point previous = null;
@@ -239,10 +262,20 @@ public class ScrollableImageView extends ImageView {
 
 		moveTo(city.getExternalPoint(), activity);
 
+		if(this.city == null) {
+			this.initialCity = city;
+		}
+		
 		this.city = city;
+		
+		
 	}
 
 	public void setNearest(List<City> nearestCities) {
 		this.nearestCities = nearestCities;
+	}
+
+	public void setGoalCity(City goalCity) {
+		this.goalCity = goalCity;
 	}
 }
