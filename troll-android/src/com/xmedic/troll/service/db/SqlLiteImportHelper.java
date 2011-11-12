@@ -76,7 +76,7 @@ public class SqlLiteImportHelper {
                 	ContentValues values = new ContentValues();
                 	values.clear();
                 	values.put("fromCityId", columns[0]);
-                	values.put("toCityId", columns[1]);
+                	values.put("toCityId", columns[i]);
                 	roads.insert(values);
                 }
 

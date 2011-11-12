@@ -53,7 +53,7 @@ public class TrollServiceSqlLite implements TrollService {
 	public List<City> getNearbyCities(String cityId) {
         Cursor cursor = db.rawQuery(
         		"SELECT c.id, c.name, c.country, c.latitude, c.longitude, c.population, c.x, c.y " +
-        				"FROM city c INNER JOIN road r ON c.id = r.fromCityId " +
+        				"FROM city c INNER JOIN road r ON c.id = r.toCityId " +
         				"WHERE r.fromCityId = ?", 
         		new String[] {cityId});
         return DataTransfomer.toList(cursor, DoCity.instance);
