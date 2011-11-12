@@ -198,7 +198,9 @@ public class ScrollableImageView extends ImageView {
 		this.city = city;
 	}
 
+
 	public void setNearest(List<City> nearestCities) {
 		this.nearestCities = nearestCities;
 	}
+
 }

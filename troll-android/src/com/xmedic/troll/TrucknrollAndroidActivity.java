@@ -17,7 +17,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.xmedic.troll.components.ScrollableImageView;
 
 public class TrucknrollAndroidActivity extends Activity {
 
@@ -42,6 +41,7 @@ public class TrucknrollAndroidActivity extends Activity {
         initGraphics();
         level = service.getLevel(getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID));
         moveToCity(level.getStart());
+
     }
 
 	private void moveToCity(City city) {
@@ -54,7 +54,7 @@ public class TrucknrollAndroidActivity extends Activity {
        button2 = (Button)findViewById(R.id.button2);
        button3 = (Button)findViewById(R.id.button3);
        button4 = (Button)findViewById(R.id.button4);
-       
+
        mapView = (ScrollableImageView)findViewById(R.id.map);
 	}
 

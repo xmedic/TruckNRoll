@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Set;
 
 import android.database.Cursor;
+import android.graphics.Point;
 
 import com.xmedic.troll.service.model.City;
+import com.xmedic.troll.service.model.Level;
 
 public class DataTransfomer {
         
@@ -78,7 +80,9 @@ public class DataTransfomer {
                 	"country", 
                 	"latitude", 
                 	"longitude", 
-                	"population"};
+                	"population",
+                	"x",
+                	"y"};
 
 				public City get(Cursor cursor) {
                     City city = new City();
@@ -90,10 +94,40 @@ public class DataTransfomer {
                     city.setLongitude(cursor.getDouble(4));
                     city.setPopulation(cursor.getLong(5));
                     
+                    if (!cursor.isNull(6)) {
+                    	Point point = new Point();
+                    	point.x = cursor.getInt(6);
+                    	point.y = cursor.getInt(7);
+                    	city.setPoint(point);
+                    }
+
                     return city;
 				}
-
-
                 
+        }
+        
+
+        public static class DoLevel implements Do<Level> {
+            
+            public final static DoLevel instance = new DoLevel();
+            
+            public static String[] columns = new String[] {
+            	"id", 
+            	"name", 
+            	"description", 
+            	"startCityId", 
+            	"fromCityId"};
+
+			public Level get(Cursor cursor) {
+                Level level = new Level();
+
+                level.setId(cursor.getString(0));
+                level.setName(cursor.getString(1));
+                level.setDescription(cursor.getString(2));
+                level.setStartCityId(cursor.getString(3));
+                level.setGoalCityId(cursor.getString(4));
+               
+                return level;
+			}
         }
 }
