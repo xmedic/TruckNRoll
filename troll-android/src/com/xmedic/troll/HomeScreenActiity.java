@@ -28,6 +28,15 @@ public class HomeScreenActiity extends Activity {
         
         setContentView(R.layout.homescreen);
         
+        Button buttonLevel4 = (Button) findViewById(R.id.buttonLevel4);
+        buttonLevel4.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				startActivity(new Intent(HomeScreenActiity.this, TrucknrollAndroidActivity.class));
+				
+			}
+		});
+        
 	}
 
 	

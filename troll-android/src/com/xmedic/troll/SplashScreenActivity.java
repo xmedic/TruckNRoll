@@ -43,6 +43,6 @@ public class SplashScreenActivity extends Activity {
 			public void run() {
 				startActivity(new Intent(SplashScreenActivity.this, HomeScreenActiity.class));				
 			}
-		}, 2000);
+		}, 3000);
     }
 }
