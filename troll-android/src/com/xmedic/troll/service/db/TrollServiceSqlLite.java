@@ -1,5 +1,6 @@
 package com.xmedic.troll.service.db;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -64,6 +65,19 @@ public class TrollServiceSqlLite implements TrollService {
 	}
 
 	private List<City> minimize(List<City> nearby, String goalId) {
-		return nearby.subList(0, MAX_CHOICES);
+		if (nearby.size() > MAX_CHOICES) {
+			List<City> result = new ArrayList<City>();
+			for (City city : nearby) {
+				if (city.getId().equals(goalId)) {
+					result.add(city);
+					break;
+				}
+			}
+			if (result.size() > 0)
+				nearby.remove(result.get(0));
+			result.addAll(nearby.subList(0, MAX_CHOICES - result.size()));
+			return result;
+		} else
+			return nearby;
 	}
 }
