@@ -11,7 +11,7 @@ import android.database.DatabaseUtils.InsertHelper;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-public class TrollSqlLiteImportHelper {
+public class SqlLiteImportHelper {
 
 	private static final String LOG_TAG = "troll-db-import";
 	
@@ -19,25 +19,28 @@ public class TrollSqlLiteImportHelper {
 			SQLiteDatabase db, 
 			Context context) {
 
-		insertCities(db, getReader(context, "cities.txt"));
+		insertCities(db, getReader(context, "LT.txt"));
 	}
 
 	private static void insertCities(
 			SQLiteDatabase db,
 			BufferedReader reader) {
 
-		DatabaseUtils.InsertHelper cities = new InsertHelper(db, TrollSqlLiteOpenHelper.CITY);
+		DatabaseUtils.InsertHelper cities = new InsertHelper(db, SqlLiteOpenHelper.CITY);
 
 		try {
             String line = null;
 
             ContentValues values = new ContentValues();
             while ((line = reader.readLine()) != null) {
-                String[] columns = line.split("\t");
+                String[] columns = line.split(";");
                 values.clear();
-                values.put("id", columns[0]);
-                values.put("title", columns[1]);
-                values.put("country", columns[2]);
+                values.put("country", "LT");
+                values.put("id", columns[0].trim());
+                values.put("name", columns[1].trim());
+                values.put("latitude", columns[2].trim());
+                values.put("longitude", columns[3].trim());
+                values.put("population", columns[4].trim().replace(",", ""));
                 cities.insert(values);
             }
 

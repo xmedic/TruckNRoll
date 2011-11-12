@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class TrollSqlLiteOpenHelper extends SQLiteOpenHelper {
+public class SqlLiteOpenHelper extends SQLiteOpenHelper {
 
 	 private static final String LOG_TAG = "troll-db";
 
@@ -14,7 +14,7 @@ public class TrollSqlLiteOpenHelper extends SQLiteOpenHelper {
 	 private Context context;
 
 	 
-	 public TrollSqlLiteOpenHelper(Context context) {
+	 public SqlLiteOpenHelper(Context context) {
 		    super(context, DDL.DB_NAME, null, DDL.DB_VERSION);
 		    this.context = context;
 	 }
@@ -32,7 +32,7 @@ public class TrollSqlLiteOpenHelper extends SQLiteOpenHelper {
 
 
 		    Log.i(LOG_TAG, "Inserting initial data");
-		    TrollSqlLiteImportHelper.importInitialData(db, context);     
+		    SqlLiteImportHelper.importInitialData(db, context);     
 		    Log.i(LOG_TAG, "Finished inserting initial data");
 
 	}
@@ -54,16 +54,13 @@ public class TrollSqlLiteOpenHelper extends SQLiteOpenHelper {
          public static int DB_VERSION = 1;
 
          public static String CITY = 
-        		 "CREATE TABLE " + TrollSqlLiteOpenHelper.CITY + " (" +
+        		 "CREATE TABLE " + SqlLiteOpenHelper.CITY + " (" +
                          "id             TEXT PRIMARY KEY, " +
-                         "title          TEXT NOT NULL, " +
-                         "longtitude     REAL NOT NULL, " +
+                         "name           TEXT NOT NULL, " +
+                         "country        TEXT NOT NULL, " +
                          "latitude       REAL NOT NULL, " +
-                         "address        TEXT, " +
-                         "city           TEXT, " +
-                         "notes          TEXT, " +
-                         "phone          TEXT, " +
-                         "url            TEXT);";
+                         "longitude      REAL NOT NULL, " +
+                         "population     INTEGER ";
 	 }
 
 }

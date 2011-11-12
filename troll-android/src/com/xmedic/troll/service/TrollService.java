@@ -1,11 +1,11 @@
 package com.xmedic.troll.service;
 
-import java.util.Set;
+import java.util.List;
 
 import com.xmedic.troll.service.model.City;
 
 public interface TrollService {
 
-	public Set<City> getCities();
+	public List<City> getCities();
 
 }
