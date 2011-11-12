@@ -18,6 +18,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -54,6 +55,8 @@ public class ScrollableImageView extends ImageView {
 	private int screenWidth;
 	
 	List<Point> history = new ArrayList<Point>();
+	
+	final Handler h = new Handler();
 
     
     public ScrollableImageView(Context context, AttributeSet set) {
@@ -253,7 +256,37 @@ public class ScrollableImageView extends ImageView {
 	}
 
 	public void moveTo(final Point point, Activity activity) {
-		scrollTo(point.x, point.y);
+		//scrollTo(point.x, point.y);
+		
+        final int yCoeficient = (getScrollY() > point.y) ? -1 : 1;
+        final int xCoeficient = (getScrollX() > point.x) ? -1 : 1;
+        Thread t = new Thread(){
+            public void run(){
+                int y = getScrollY();
+                int x = getScrollX();
+                while(y != point.y || x != point.x){
+                    final int X = x;
+                    final int Y = y;
+                    h.post(new Runnable() {
+                        public void run() {
+                            scrollTo(X, Y);
+                        }
+                    });
+                    if(y != point.y) {
+                    y = y + yCoeficient;
+                    }
+                    if(x != point.x) {
+                    x = x + xCoeficient;
+                    }
+                    try {
+                        sleep(1000/350);
+                    } catch (InterruptedException e) {
+                    }
+                }
+            }
+        };
+        t.start();
+		
 		setCurrent(point.x, point.y);
 	}
 
