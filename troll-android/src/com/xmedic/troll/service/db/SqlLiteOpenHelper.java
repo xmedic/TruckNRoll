@@ -83,10 +83,10 @@ public class SqlLiteOpenHelper extends SQLiteOpenHelper {
          public static String LEVEL = 
         		 "CREATE TABLE " + SqlLiteOpenHelper.LEVEL + " (" +
                          "id           TEXT PRIMARY KEY, " +
-                         "name         TEXT PRIMARY KEY, " +
-                         "description  TEXT PRIMARY KEY, " +
-        				 "startCityId  TEXT PRIMARY KEY, " +
-        				 "goalCityId   TEXT PRIMARY KEY)";
+                         "name         TEXT, " +
+                         "description  TEXT, " +
+        				 "startCityId  TEXT, " +
+        				 "goalCityId   TEXT)";
 	 }
 
 }
