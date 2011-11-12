@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package xmed.troll;
+package com.xmedic.troll;
 
 public final class R {
     public static final class attr {
