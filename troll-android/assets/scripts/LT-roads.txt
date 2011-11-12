@@ -27,3 +27,4 @@ Tauragė;Šilalė;Šiauliai;Šilutė;Raseiniai;
 Pabradė;Vilnius;Molėtai;Švenčionys;
 Molėtai;Utena;Pabradė;Ukmergė;Vilnius;Anykščiai;
 Švenčionys;Pabradė;Zarasai;
+Klaipėda;Plungė;Rietavas;Šilutė;

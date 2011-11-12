@@ -2,6 +2,7 @@ package com.xmedic.troll.service.db;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -67,7 +68,8 @@ public class TrollServiceSqlLite implements TrollService {
 	private List<City> randomize(List<City> nearby) {
 		List<City> temp = new ArrayList<City>();
 		while (nearby.size() != 0) {
-			City city = nearby.get((int) Math.round(Math.random() * (nearby.size()-1)));
+			Random random = new Random(nearby.hashCode());
+			City city = nearby.get((int) Math.round(random.nextInt(nearby.size())));
 			temp.add(city);
 			nearby.remove(city);
 		}
