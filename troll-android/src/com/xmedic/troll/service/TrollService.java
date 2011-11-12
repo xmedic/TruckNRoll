@@ -11,7 +11,7 @@ public interface TrollService {
 	
 	public Level getLevel(String levelId);
 	
-	public List<City> getNearbyCities(String cityId);
+	public List<City> getNearbyCities(String cityId, String goalId);
 	
 	public City getCity(String id);
 

@@ -14,6 +14,8 @@ import com.xmedic.troll.service.model.Level;
 
 public class TrollServiceSqlLite implements TrollService {
 
+	private static final int MAX_CHOICES = 4;
+
 	private SQLiteDatabase db;
 	 
 	@SuppressWarnings("unused")
@@ -50,12 +52,18 @@ public class TrollServiceSqlLite implements TrollService {
         return DataTransfomer.to(cursor, DoCity.instance);
 	}
 
-	public List<City> getNearbyCities(String cityId) {
+	public List<City> getNearbyCities(String cityId, String goalId) {
         Cursor cursor = db.rawQuery(
         		"SELECT c.id, c.name, c.country, c.latitude, c.longitude, c.population, c.x, c.y " +
         				"FROM city c INNER JOIN road r ON c.id = r.toCityId " +
         				"WHERE r.fromCityId = ?", 
         		new String[] {cityId});
-        return DataTransfomer.toList(cursor, DoCity.instance);
+
+        List<City> nearby = DataTransfomer.toList(cursor, DoCity.instance);
+		return (nearby.size() <= MAX_CHOICES) ? nearby : minimize(nearby, goalId);
+	}
+
+	private List<City> minimize(List<City> nearby, String goalId) {
+		return nearby.subList(0, MAX_CHOICES);
 	}
 }
