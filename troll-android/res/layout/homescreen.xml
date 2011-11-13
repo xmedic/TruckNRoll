@@ -70,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="6" android:background="@drawable/disabled" android:textStyle="bold" android:textSize="16pt" android:textColor="@color/translucent_black"/>
+                    android:background="@drawable/disabled" android:textStyle="bold" android:textSize="16pt" android:textColor="@color/translucent_black"/>
             </LinearLayout>
         </LinearLayout>
 

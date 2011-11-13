@@ -114,7 +114,7 @@
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#ffff00"
-                android:textSize="18pt" />
+                android:textSize="16pt" />
 
             <TextView
                 android:id="@+id/timeleftlabel"
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_toRightOf="@+id/textView1"
-                android:text="TextView" android:textSize="18pt" android:textColor="#ffff00" android:typeface="monospace"/>
+                android:text="TextView" android:textSize="16pt" android:textColor="#ffff00" android:typeface="monospace"/>
 
         </RelativeLayout>
 
