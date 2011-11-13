@@ -69,7 +69,7 @@ public class TrucknrollAndroidActivity extends Activity {
         moveToCity(service.getCity(level.getStartCityId()));
         
         City goal = service.getCity(level.getGoalCityId());
-        goalView.setText("Goal: "  + goal.getName());
+        goalView.setText(goal.getName());
         mapView.setGoalCity(goal);
 
         counter = new CountDown(Integer.parseInt(level.getTimeLimit()) * 1000,1000, timeLeftView);
