@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Handler;
@@ -113,13 +114,7 @@ public class ScrollableImageView extends ImageView {
 		super.onDraw(canvas);
 		
 		if(history.size() > 1) {
-			Point previous = null;
-			for(Point point : history) {
-				if(previous != null) {
-					canvas.drawLine(previous.x, previous.y, point.x, point.y, linePaint);
-				}
-				previous = point;
-			}
+			drawHistoryCurve(canvas);
 		}
 
 		if(city != null) {
@@ -154,11 +149,39 @@ public class ScrollableImageView extends ImageView {
 		if(initialCity != null) {
 			Point coordinates = MapMath.toDrawPoint(initialCity.getPoint(), maxX, maxY);
 			canvas.drawBitmap(
-					BitmapFactory.decodeResource(getResources(), R.drawable.start_pin), 
+					BitmapFactory.decodeResource(getResources(), R.drawable.active_pin), 
 					coordinates.x - 15, 
 					coordinates.y - 12, 
 					labelPaint);
 		}
+	}
+
+
+
+	private void drawHistoryCurve(Canvas canvas) {
+		Path path = new Path();
+
+		for(int i = 0; i < history.size(); i++) {
+			Point point = history.get(i);
+			if (i == 0) {
+				path.moveTo(point.x, point.y);
+			} else { 
+				path.lineTo(point.x, point.y);
+			}
+			if (i+1 == history.size()) {
+				path.moveTo(point.x, point.y);
+			}
+		}
+		path.close();
+
+		Paint linePaint = new Paint();
+		linePaint.setColor(Color.GRAY);
+		linePaint.setStyle(Paint.Style.STROKE);
+		linePaint.setStrokeWidth(5);
+		linePaint.setAntiAlias(true);
+		linePaint.setPathEffect(new DashPathEffect(new float[] {10, 10}, 0));
+
+		canvas.drawPath(path, linePaint);
 	}
 	
 	@Override

@@ -1,18 +1,18 @@
 package com.xmedic.troll.components;
 
-import com.xmedic.troll.service.MapMath;
-
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.xmedic.troll.R;
+import com.xmedic.troll.service.MapMath;
 
 public class PreviewImage extends ImageView {
 
@@ -31,10 +31,10 @@ public class PreviewImage extends ImageView {
 		 blackPaint.setColor(Color.BLACK);
 		 
 		 linePaint = new Paint();
-		 linePaint.setColor(Color.GRAY);
-		 linePaint.setStrokeWidth(5);
+		 linePaint.setColor(Color.BLACK);
+		 linePaint.setStrokeWidth(1);
 		 linePaint.setAntiAlias(true);
-		 linePaint.setPathEffect(new DashPathEffect(new float[] {10, 10}, 0));
+		 linePaint.setPathEffect(new DashPathEffect(new float[] {2, 2}, 0));
 	}
 	
 	public void setStartPoint(Point startPoint) {
@@ -51,18 +51,37 @@ public class PreviewImage extends ImageView {
 		super.onDraw(canvas);
 		if(startPoint != null && endPoint != null) {
 			
-			Log.d("START", startPoint.toString());
 			Point coordinatesStart = MapMath.toPreviewDrawPoint(startPoint);
-			canvas.drawCircle(coordinatesStart.x, coordinatesStart.y, 4, blackPaint);
+			Point coordinatesGoal = MapMath.toPreviewDrawPoint(endPoint);
+
+			canvas.drawLine(coordinatesStart.x, coordinatesStart.y, coordinatesGoal.x, coordinatesGoal.y, linePaint);
+			
+			Log.d("START", startPoint.toString());
+			
+
+//			canvas.drawCircle(coordinatesStart.x, coordinatesStart.y, 4, blackPaint);
+			canvas.drawBitmap(
+					BitmapFactory.decodeResource(getResources(), R.drawable.start_pin_small), 
+					coordinatesStart.x - 5, 
+					coordinatesStart.y - 5, 
+					blackPaint);
+			
 			Log.d("COORD", coordinatesStart.toString());
 			
-			Point coordinatesGoal = MapMath.toPreviewDrawPoint(endPoint);
-			canvas.drawCircle(coordinatesGoal.x, coordinatesGoal.y, 4, blackPaint);
+			
+
+//			canvas.drawCircle(coordinatesGoal.x, coordinatesGoal.y, 4, blackPaint);
+			canvas.drawBitmap(
+					BitmapFactory.decodeResource(getResources(), R.drawable.finish_ping_small), 
+					coordinatesGoal.x - 5, 
+					coordinatesGoal.y - 5, 
+					blackPaint);
+
 			Log.d("START", endPoint.toString());
 			Log.d("COORD", coordinatesGoal.toString());
 			
 			 
-			 canvas.drawLine(coordinatesStart.x, coordinatesStart.y, coordinatesGoal.x, coordinatesGoal.y, linePaint);
+			 
 
 		}
 	}
