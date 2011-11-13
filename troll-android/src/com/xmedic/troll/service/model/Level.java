@@ -12,6 +12,8 @@ public class Level {
 	private String startCityId;
 	
 	private String goalCityId;
+	
+	private String timeLimit;
 
 
 	public String getId() {
@@ -52,6 +54,14 @@ public class Level {
 
 	public void setGoalCityId(String goalCityId) {
 		this.goalCityId = goalCityId;
+	}
+
+	public String getTimeLimit() {
+		return timeLimit;
+	}
+
+	public void setTimeLimit(String timeLimit) {
+		this.timeLimit = timeLimit;
 	}
 
 }

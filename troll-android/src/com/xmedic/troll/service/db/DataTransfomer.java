@@ -115,8 +115,9 @@ public class DataTransfomer {
             	"id", 
             	"name", 
             	"description", 
-            	"startCityId", 
-            	"fromCityId"};
+            	"startCityId",
+            	"fromCityId",
+            	"timeLimit"};
 
 			public Level get(Cursor cursor) {
                 Level level = new Level();
@@ -126,6 +127,7 @@ public class DataTransfomer {
                 level.setDescription(cursor.getString(2));
                 level.setStartCityId(cursor.getString(3));
                 level.setGoalCityId(cursor.getString(4));
+                level.setTimeLimit(cursor.getString(5));
                
                 return level;
 			}

@@ -2,6 +2,7 @@ package com.xmedic.troll.service.db;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -37,7 +38,7 @@ public class TrollServiceSqlLite implements TrollService {
 
 	public List<Level> getLevels() {
         Cursor cursor = db.rawQuery(
-        		"SELECT id, name, description, startCityId, goalCityId FROM level", 
+        		"SELECT id, name, description, startCityId, goalCityId, timeLimit FROM level", 
         		new String[] {});
         List<Level> levels = DataTransfomer.toList(cursor, DoLevel.instance);        
         return levels;
@@ -45,7 +46,7 @@ public class TrollServiceSqlLite implements TrollService {
 
 	public Level getLevel(String levelId) {
         Cursor cursor = db.rawQuery(
-        		"SELECT id, name, description, startCityId, goalCityId " +
+        		"SELECT id, name, description, startCityId, goalCityId, timeLimit " +
         		"FROM level WHERE id = ?", 
         		new String[] {levelId});
         return DataTransfomer.to(cursor, DoLevel.instance);
@@ -76,8 +77,9 @@ public class TrollServiceSqlLite implements TrollService {
 
 	private List<City> randomize(List<City> nearby) {
 		List<City> temp = new ArrayList<City>();
+		Date date = new Date();
+		Random random = new Random(date.getTime());
 		while (nearby.size() != 0) {
-			Random random = new Random(nearby.hashCode());
 			City city = nearby.get((int) Math.round(random.nextInt(nearby.size())));
 			temp.add(city);
 			nearby.remove(city);

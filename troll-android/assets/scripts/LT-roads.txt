@@ -1,5 +1,5 @@
 Vilnius;Pabradė;Molėtai;Trakai;Ukmergė;Šalčininkai;Vievis;
-Vievis;Trakai;Šalčininkai;Alytus;Vilnius;Elektrėnai
+Vievis;Trakai;Alytus;Vilnius;Elektrėnai
 Trakai;Vilnius;Vievis;Šalčininkai;Alytus;
 Šalčininkai;Trakai;Vilnius;
 Alytus;Druskininkai;Trakai;Marijampolė;Kaunas;
@@ -8,7 +8,7 @@ Marijampolė;Kaunas;Alytus;Druskininkai;Šakiai;
 Šakiai;Marijampolė;Kaunas;Tauragė;Raseiniai;
 Raseiniai;Šakiai;Kaunas;Kėdainiai;Tauragė;Rietavas;
 Kaunas;Ukmergė;Marijampolė;Kėdainiai;Raseiniai;Elektrėnai;Ukmergė;
-Kėdainiai;Raseiniai;Kaunas;Ukmergė;Panevėžys;Šiauliai;
+Kėdainiai;Raseiniai;Kaunas;Ukmergė;Panevėžys;Šiauliai;Elektrėnai;
 Ukmergė;Kėdainiai;Panevėžys;Anykščiai;Molėtai;Utena;Vilnius;
 Anykščiai;Ukmergė;Molėtai;Panevėžys;Rokiškis;
 Utena;Zarasai;Molėtai;Ukmergė;
