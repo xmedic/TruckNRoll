@@ -81,15 +81,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/taptextView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:text="TAP TO CONTINUE"
-            android:textAppearance="?android:attr/textAppearanceLarge" android:textColor="#514152" android:layout_margin="20pt" android:textSize="15pt" android:paddingLeft="30pt"/>
-
         <LinearLayout
             android:id="@+id/linearLayout4"
             android:layout_width="wrap_content"
@@ -110,6 +101,18 @@
             android:src="@drawable/previewmap"/>
             
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/taptextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/linearLayout4"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="30pt"
+            android:text="TAP TO CONTINUE"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#514152"
+            android:textSize="15pt" />
 
     </RelativeLayout>
 	
