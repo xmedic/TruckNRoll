@@ -60,7 +60,7 @@ public class SplashScreenActivity extends Activity {
         animation.setDuration(3000);
         animation.setInterpolator(new AccelerateInterpolator());
         truckImage.startAnimation(animation);
-        
+
         new TrollServiceSqlLite(this).getCity("1");
     }
 }
