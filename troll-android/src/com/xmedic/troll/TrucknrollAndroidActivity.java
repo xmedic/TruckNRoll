@@ -73,29 +73,25 @@ public class TrucknrollAndroidActivity extends Activity {
 
 	private void moveToCity(City city) {
 		
-		hideButtons();
-		
-		List<City> nearestCities = service.getNearbyCities(city.getId(), level.getGoalCityId());
-		
-		Log.d("moveToCity", city.getId());
-		Log.d("moveToCity", "neares city size " + nearestCities.size() + " id used " + city.getId());
+		hideButtons();		
 	
 		int index = 0;
-		
-		for(City nearestCity : nearestCities) {
-			setChoice(nearestCity, index);	
-			index++;
-		}
-		
 		mapView.setCenter(city, this);
-		mapView.setNearest(nearestCities);
+		mapView.setNearest(null);
 		
 		if(city.getId().equals(level.getGoalCityId())) {
 			Toast toast = Toast.makeText(getApplicationContext(), 
 					"Congrats! You have reached your destination", Toast.LENGTH_LONG);
 			toast.show();
-			hideButtons();
+			return;
 		}
+		
+		List<City> nearestCities = service.getNearbyCities(city.getId(), level.getGoalCityId());
+		for(City nearestCity : nearestCities) {
+			setChoice(nearestCity, index);	
+			index++;
+		}
+		mapView.setNearest(nearestCities);
 	}
 
 	private void hideButtons() {

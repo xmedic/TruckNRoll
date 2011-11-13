@@ -50,12 +50,12 @@ public final class R {
         public static final int linearLayout3=0x7f060011;
         public static final int map=0x7f060001;
         public static final int movingtruck=0x7f06001b;
-        public static final int previewMap=0x7f060015;
+        public static final int previewMap=0x7f060016;
         public static final int progressBar1=0x7f060002;
         public static final int relativeLayout1=0x7f060000;
         public static final int relativeLayout2=0x7f060003;
         public static final int relativeLayout3=0x7f060006;
-        public static final int startLevel=0x7f060016;
+        public static final int startLevel=0x7f060015;
         public static final int targetcity=0x7f06000b;
         public static final int textView1=0x7f060017;
         public static final int timeleftlabel=0x7f060018;
