@@ -5,6 +5,7 @@ package com.xmedic.troll;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * @author vincentas
@@ -45,6 +47,11 @@ public class HomeScreenActiity extends Activity {
         setLevel(R.id.buttonLevel3, "3");
         setLevel(R.id.buttonLevel4, "4");
         setLevel(R.id.buttonLevel5, "5");
+        
+        TextView levelLabel = (TextView) findViewById(R.id.levellabel);        
+        
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
+        levelLabel.setTypeface(tf);
 	}
 
 	private void setLevel(int buttonId, final String level) {
