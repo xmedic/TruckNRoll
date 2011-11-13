@@ -80,7 +80,7 @@ public class TrucknrollAndroidActivity extends Activity {
 			}
 		});
         
-        successDialog =  new SuccessDialog(this);
+        successDialog =  new SuccessDialog(this, levelId);
         
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
         button1.setTypeface(tf);
