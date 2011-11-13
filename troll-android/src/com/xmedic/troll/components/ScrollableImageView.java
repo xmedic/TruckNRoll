@@ -127,7 +127,6 @@ public class ScrollableImageView extends ImageView {
 			Point previous = null;
 			for(Point point : history) {
 				if(previous != null) {
-					Log.d("DRAW", "Prev x" +previous.x + " Prev y " + previous.y + " Px + "+point.x + " Py " + point.y);
 					canvas.drawLine(previous.x, previous.y, point.x, point.y, linePaint);
 				}
 				previous = point;

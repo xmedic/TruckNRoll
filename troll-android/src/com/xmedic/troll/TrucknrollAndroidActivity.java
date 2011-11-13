@@ -13,6 +13,7 @@ import com.xmedic.troll.service.model.Level;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.opengl.Visibility;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ public class TrucknrollAndroidActivity extends Activity {
 	private TrollService service;
 	
 	private View.OnClickListener citySelectedListener;
+	private CountDown counter;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,7 @@ public class TrucknrollAndroidActivity extends Activity {
         goalView.setText("Goal: "  + goal.getName());
         mapView.setGoalCity(goal);
 
-        CountDown counter = new CountDown(30000,1000, timeLeftView);
+        counter = new CountDown(30000,1000, timeLeftView);
         counter.start();
         counter.setOnFinishListener(new CountDown.OnCounterFinishListener() {	
 			public void finished() {
@@ -80,6 +82,8 @@ public class TrucknrollAndroidActivity extends Activity {
 		mapView.setNearest(null);
 		
 		if(city.getId().equals(level.getGoalCityId())) {
+			counter.cancel();
+			timeLeftView.setTextColor(Color.GREEN);
 			Toast toast = Toast.makeText(getApplicationContext(), 
 					"Congrats! You have reached your destination", Toast.LENGTH_LONG);
 			toast.show();
@@ -102,7 +106,6 @@ public class TrucknrollAndroidActivity extends Activity {
 	}
 
 	private void setChoice(City city, int index) {
-		Log.d("setChoice","Setting city" + city.getName() + " index " + index);
 		Button buttonToUse = null;
 		if(index == 0) {
 			buttonToUse =  button3;
