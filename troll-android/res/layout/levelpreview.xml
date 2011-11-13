@@ -17,7 +17,6 @@
                 android:id="@+id/startLevel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_margin="5dp"
                 android:background="@drawable/rounded_corner_box"
                 android:text="Start!"
