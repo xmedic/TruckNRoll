@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.xmedic.troll.components.CountDown;
 import com.xmedic.troll.components.ScrollableImageView;
+import com.xmedic.troll.dialogs.SuccessDialog;
 import com.xmedic.troll.service.TrollService;
 import com.xmedic.troll.service.db.TrollServiceSqlLite;
 import com.xmedic.troll.service.model.City;
@@ -46,6 +47,8 @@ public class TrucknrollAndroidActivity extends Activity {
 	private View.OnClickListener citySelectedListener;
 	private CountDown counter;
 	
+	private SuccessDialog successDialog;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +74,8 @@ public class TrucknrollAndroidActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+        
+        successDialog =  new SuccessDialog(this);
     }
 
 	private void moveToCity(City city) {
@@ -87,6 +92,7 @@ public class TrucknrollAndroidActivity extends Activity {
 			Toast toast = Toast.makeText(getApplicationContext(), 
 					"Congrats! You have reached your destination", Toast.LENGTH_LONG);
 			toast.show();
+			successDialog.show();
 			return;
 		}
 		
