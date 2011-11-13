@@ -21,6 +21,7 @@ public class SuccessDialog extends Dialog implements android.view.View.OnClickLi
 	 
 	public SuccessDialog(Context context, String levelId) {
 		super(context);
+		setTitle("Job well done.");
         this.context = context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layout = inflater.inflate(R.layout.successdialog,null);

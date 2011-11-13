@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="wrap_content">
-
-	<LinearLayout
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:gravity="center"
@@ -15,7 +12,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true" android:text="No beer for today :("
-                 android:textSize="18pt"/>
+                 android:textSize="18pt" android:visibility="gone"/>
 
 		<RelativeLayout
 		    android:id="@+id/relativeLayout1"
@@ -34,19 +31,22 @@
 		        android:id="@+id/retryLevel"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_alignParentLeft="true"
-		        android:layout_centerVertical="true"
-		        android:text="Retry level" />
+		        android:layout_alignBottom="@+id/failImage"
+		        android:layout_alignRight="@+id/failImage"
+		        android:background="@color/translucent_black"
+		        android:text="Retry level"
+		        android:textSize="12pt" android:padding="1pt" android:layout_margin="2pt" android:textColor="#cccccc"/>
 
-		    		    <Button
-		    		        android:id="@+id/mainMenu"
-		    		        android:layout_width="wrap_content"
-		    		        android:layout_height="wrap_content"
-		    		        android:layout_alignParentLeft="true"
-		    		        android:layout_below="@+id/retryLevel"
-		    		        android:text="Main Menu" />
+		    <Button
+		        android:id="@+id/mainMenu"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBottom="@+id/failImage"
+		        android:layout_alignParentLeft="true"
+		        android:background="@color/translucent_black"
+		        android:text="Main Menu"
+		        android:textSize="12pt" android:padding="1pt" android:layout_margin="2pt" android:textColor="#cccccc"/>
 
 		</RelativeLayout>
 
 	</LinearLayout>
-</ScrollView>

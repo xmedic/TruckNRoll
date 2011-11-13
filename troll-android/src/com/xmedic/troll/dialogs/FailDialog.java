@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.xmedic.troll.HomeScreenActiity;
 import com.xmedic.troll.LevelPreviewActivity;
 import com.xmedic.troll.R;
+import com.xmedic.troll.TrucknrollAndroidActivity;
 
 public class FailDialog  extends Dialog implements android.view.View.OnClickListener {
 
@@ -21,6 +22,7 @@ public class FailDialog  extends Dialog implements android.view.View.OnClickList
 	public FailDialog(Context context, String levelId) {
 		super(context);
        this.context = context;
+       setTitle("No beer for today...");
        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
        layout = inflater.inflate(R.layout.faildialog,null);
        setContentView(layout);
@@ -42,7 +44,7 @@ public class FailDialog  extends Dialog implements android.view.View.OnClickList
 		retryLevel.setOnClickListener(new View.OnClickListener() {
 		
 			public void onClick(View v) {
-				Intent intent = new Intent(context, LevelPreviewActivity.class);
+				Intent intent = new Intent(context, TrucknrollAndroidActivity.class);
 				intent.putExtra(HomeScreenActiity.LEVEL_ID, levelId);
 				context.startActivity(intent);		
 			}

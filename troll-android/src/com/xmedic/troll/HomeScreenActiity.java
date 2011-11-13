@@ -50,7 +50,7 @@ public class HomeScreenActiity extends Activity {
         
         TextView levelLabel = (TextView) findViewById(R.id.levellabel);        
         
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/frutiger.ttf");
         levelLabel.setTypeface(tf);
 	}
 

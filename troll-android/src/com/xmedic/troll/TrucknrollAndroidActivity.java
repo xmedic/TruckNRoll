@@ -162,12 +162,13 @@ public class TrucknrollAndroidActivity extends Activity {
        successDialog =  new SuccessDialog(this, level.getId()); 
        failDialog =  new FailDialog(this,level.getId());
        
-       Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
+       Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/frutiger.ttf");
        button1.setTypeface(tf);
        button2.setTypeface(tf);
        button3.setTypeface(tf);
        button4.setTypeface(tf);
        
+       tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
        goalView.setTypeface(tf);
    	   timeLeftView.setTypeface(tf);
 	}
