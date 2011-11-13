@@ -10,6 +10,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.xmedic.troll.service.MapMath;
+import com.xmedic.troll.service.MapMath.MapType;
 import com.xmedic.troll.service.model.City;
 
 import android.app.Activity;
@@ -57,7 +58,6 @@ public class ScrollableImageView extends ImageView {
 	List<Point> history = new ArrayList<Point>();
 	
 	final Handler h = new Handler();
-
     
     public ScrollableImageView(Context context, AttributeSet set) {
     	super(context, set);
@@ -293,15 +293,13 @@ public class ScrollableImageView extends ImageView {
 	public void setCenter(City city, Activity activity) {
 		history.add(MapMath.toDrawPoint(city.getPoint(), maxX, maxY));
 
-		moveTo(city.getExternalPoint(), activity);
+		moveTo(MapMath.toScrollPoint(city.getPoint(), MapType.NORMAL), activity);
 
 		if(this.city == null) {
 			this.initialCity = city;
 		}
 		
 		this.city = city;
-		
-		
 	}
 
 	public void setNearest(List<City> nearestCities) {

@@ -1,6 +1,7 @@
 package com.xmedic.troll.service.model;
 
 import com.xmedic.troll.service.MapMath;
+import com.xmedic.troll.service.MapMath.MapType;
 
 import android.graphics.Point;
 
@@ -68,10 +69,6 @@ public class City {
 
 	public Point getPoint() {
 		return point;
-	}
-	
-	public Point getExternalPoint() {
-		return MapMath.toScrollPoint(getPoint());
 	}
 
 	public void setPoint(Point point) {

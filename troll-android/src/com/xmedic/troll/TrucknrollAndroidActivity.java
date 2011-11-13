@@ -56,22 +56,19 @@ public class TrucknrollAndroidActivity extends Activity {
         goalView.setText("Goal: "  + goal.getName());
         mapView.setGoalCity(goal);
         
+        
 
     }
 
 	private void moveToCity(City city) {
 		
+		hideButtons();
+		
 		List<City> nearestCities = service.getNearbyCities(city.getId(), level.getGoalCityId());
 		
 		Log.d("moveToCity", city.getId());
 		Log.d("moveToCity", "neares city size " + nearestCities.size() + " id used " + city.getId());
-
-		
-		button1.setVisibility(View.INVISIBLE);
-		button2.setVisibility(View.INVISIBLE);
-		button3.setVisibility(View.INVISIBLE);
-		button4.setVisibility(View.INVISIBLE);
-		
+	
 		int index = 0;
 		
 		for(City nearestCity : nearestCities) {
@@ -86,7 +83,15 @@ public class TrucknrollAndroidActivity extends Activity {
 			Toast toast = Toast.makeText(getApplicationContext(), 
 					"Congrats! You have reached your destination", Toast.LENGTH_LONG);
 			toast.show();
+			hideButtons();
 		}
+	}
+
+	private void hideButtons() {
+		button1.setVisibility(View.INVISIBLE);
+		button2.setVisibility(View.INVISIBLE);
+		button3.setVisibility(View.INVISIBLE);
+		button4.setVisibility(View.INVISIBLE);
 	}
 
 	private void setChoice(City city, int index) {
@@ -135,8 +140,6 @@ public class TrucknrollAndroidActivity extends Activity {
        goalView = (TextView)findViewById(R.id.targetcity);
        
        mapView = (ScrollableImageView)findViewById(R.id.map);
-       
-       
 	}
 
 	private void initGraphics() {
