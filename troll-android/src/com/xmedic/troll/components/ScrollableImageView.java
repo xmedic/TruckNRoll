@@ -3,7 +3,6 @@ package com.xmedic.troll.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.R;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -19,6 +18,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
+import com.xmedic.troll.R;
 import com.xmedic.troll.service.MapMath;
 import com.xmedic.troll.service.MapMath.MapType;
 import com.xmedic.troll.service.model.City;
