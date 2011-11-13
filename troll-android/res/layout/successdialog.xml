@@ -28,29 +28,37 @@
 		        android:src="@drawable/successroll" />
 
 		    <Button
-		        android:id="@+id/nextLevel"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_alignBottom="@+id/successImage"
-		        android:layout_alignRight="@+id/successImage"
-		        android:text="Next Level" android:textSize="12pt" android:background="@color/translucent_black" android:textColor="#cccccc"/>
-
-		    <Button
 		        android:id="@+id/reviewLevel"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_alignBaseline="@+id/nextLevel"
-		        android:layout_alignBottom="@+id/nextLevel"
-		        android:layout_alignParentLeft="true"
-		        android:text="Review level" android:textSize="12pt" android:background="@color/translucent_black" android:textColor="#cccccc"/>
+		        android:layout_alignBottom="@+id/successImage"
+		        android:layout_centerHorizontal="true"
+		        android:background="@color/translucent_black"
+		        android:text="Review level"
+		        android:textColor="#cccccc"
+		        android:textSize="12pt" />
+
+		    <Button
+		        android:id="@+id/nextLevel"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_above="@+id/reviewLevel"
+		        android:layout_centerHorizontal="true"
+		        android:background="@color/translucent_black"
+		        android:text="Next Level"
+		        android:textColor="#cccccc"
+		        android:textSize="12pt" />
 
 		    <Button
 		        android:id="@+id/mainMenuSuccess"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_alignParentTop="true"
-		        android:layout_alignRight="@+id/successImage"
-		        android:text="Main Menu" android:textSize="12pt" android:background="@color/translucent_black" android:textColor="#cccccc"/>
+		        android:layout_above="@+id/nextLevel"
+		        android:layout_centerHorizontal="true"
+		        android:background="@color/translucent_black"
+		        android:text="Main Menu"
+		        android:textColor="#cccccc"
+		        android:textSize="12pt" />
 
 		</RelativeLayout>
 

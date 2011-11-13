@@ -28,24 +28,30 @@
 		        android:src="@drawable/beerfail" />
 
 		    <Button
-		        android:id="@+id/retryLevel"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_alignBottom="@+id/failImage"
-		        android:layout_alignRight="@+id/failImage"
-		        android:background="@color/translucent_black"
-		        android:text="Retry level"
-		        android:textSize="12pt" android:padding="1pt" android:layout_margin="2pt" android:textColor="#cccccc"/>
-
-		    <Button
 		        android:id="@+id/mainMenu"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:layout_alignBottom="@+id/failImage"
-		        android:layout_alignParentLeft="true"
+		        android:layout_centerHorizontal="true"
+		        android:layout_margin="2pt"
 		        android:background="@color/translucent_black"
+		        android:padding="1pt"
 		        android:text="Main Menu"
-		        android:textSize="12pt" android:padding="1pt" android:layout_margin="2pt" android:textColor="#cccccc"/>
+		        android:textColor="#cccccc"
+		        android:textSize="12pt" />
+
+		    <Button
+		        android:id="@+id/retryLevel"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_above="@+id/mainMenu"
+		        android:layout_centerHorizontal="true"
+		        android:layout_margin="2pt"
+		        android:background="@color/translucent_black"
+		        android:padding="1pt"
+		        android:text="Retry level"
+		        android:textColor="#cccccc"
+		        android:textSize="12pt" />
 
 		</RelativeLayout>
 
