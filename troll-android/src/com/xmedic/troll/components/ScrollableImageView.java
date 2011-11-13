@@ -290,11 +290,10 @@ public class ScrollableImageView extends ImageView {
 	}
 
 	public void setScreenSize(int width, int height) {
-		int overscrollCompensation = 150;
-		this.screenWidth = width + overscrollCompensation;
-		this.screenHeight = height + overscrollCompensation;
-		maxX = (int) ((MapMath.MAP_WIDTH / 2) - (width / 2)) + overscrollCompensation;
-		maxY = (int) ((MapMath.MAP_HEIGHT / 2) - (height / 2)) + overscrollCompensation;
+		this.screenWidth = width;
+		this.screenHeight = height;
+		maxX = (int) ((MapMath.MAP_WIDTH / 2) - (width / 2)) + MapMath.OVERCOMPENSATION;
+		maxY = (int) ((MapMath.MAP_HEIGHT / 2) - (height / 2)) + MapMath.OVERCOMPENSATION;
 
 		// set scroll limits
 		maxLeft = (maxX * -1);
