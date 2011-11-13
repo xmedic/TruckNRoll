@@ -52,11 +52,11 @@ public class PreviewImage extends ImageView {
 		if(startPoint != null && endPoint != null) {
 			
 			Log.d("START", startPoint.toString());
-			Point coordinatesStart = MapMath.toDrawPoint(new Point((int)(startPoint.x / 3.33176), (int)(startPoint.y / 3.331275)), 0, 0);
+			Point coordinatesStart = MapMath.toPreviewDrawPoint(startPoint);
 			canvas.drawCircle(coordinatesStart.x, coordinatesStart.y, 4, blackPaint);
 			Log.d("COORD", coordinatesStart.toString());
 			
-			Point coordinatesGoal = MapMath.toDrawPoint(new Point((int)(endPoint.x / 3.33176), (int)(endPoint.y / 3.331275)), 0, 0);
+			Point coordinatesGoal = MapMath.toPreviewDrawPoint(endPoint);
 			canvas.drawCircle(coordinatesGoal.x, coordinatesGoal.y, 4, blackPaint);
 			Log.d("START", endPoint.toString());
 			Log.d("COORD", coordinatesGoal.toString());
