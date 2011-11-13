@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.xmedic.troll.components.CountDown;
 import com.xmedic.troll.components.ScrollableImageView;
+import com.xmedic.troll.dialogs.SuccessDialog;
 import com.xmedic.troll.service.TrollService;
 import com.xmedic.troll.service.db.TrollServiceSqlLite;
 import com.xmedic.troll.service.model.City;
@@ -13,6 +14,7 @@ import com.xmedic.troll.service.model.Level;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.opengl.Visibility;
 import android.os.Bundle;
@@ -43,6 +45,9 @@ public class TrucknrollAndroidActivity extends Activity {
 	private TrollService service;
 	
 	private View.OnClickListener citySelectedListener;
+	private CountDown counter;
+	
+	private SuccessDialog successDialog;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +66,7 @@ public class TrucknrollAndroidActivity extends Activity {
         goalView.setText("Goal: "  + goal.getName());
         mapView.setGoalCity(goal);
 
-        CountDown counter = new CountDown(30000,1000, timeLeftView);
+        counter = new CountDown(30000,1000, timeLeftView);
         counter.start();
         counter.setOnFinishListener(new CountDown.OnCounterFinishListener() {	
 			public void finished() {
@@ -69,33 +74,34 @@ public class TrucknrollAndroidActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+        
+        successDialog =  new SuccessDialog(this);
     }
 
 	private void moveToCity(City city) {
 		
-		hideButtons();
-		
-		List<City> nearestCities = service.getNearbyCities(city.getId(), level.getGoalCityId());
-		
-		Log.d("moveToCity", city.getId());
-		Log.d("moveToCity", "neares city size " + nearestCities.size() + " id used " + city.getId());
+		hideButtons();		
 	
 		int index = 0;
+		mapView.setCenter(city, this);
+		mapView.setNearest(null);
 		
+		if(city.getId().equals(level.getGoalCityId())) {
+			counter.cancel();
+			timeLeftView.setTextColor(Color.GREEN);
+			Toast toast = Toast.makeText(getApplicationContext(), 
+					"Congrats! You have reached your destination", Toast.LENGTH_LONG);
+			toast.show();
+			successDialog.show();
+			return;
+		}
+		
+		List<City> nearestCities = service.getNearbyCities(city.getId(), level.getGoalCityId());
 		for(City nearestCity : nearestCities) {
 			setChoice(nearestCity, index);	
 			index++;
 		}
-		
-		mapView.setCenter(city, this);
 		mapView.setNearest(nearestCities);
-		
-		if(city.getId().equals(level.getGoalCityId())) {
-			Toast toast = Toast.makeText(getApplicationContext(), 
-					"Congrats! You have reached your destination", Toast.LENGTH_LONG);
-			toast.show();
-			hideButtons();
-		}
 	}
 
 	private void hideButtons() {
@@ -106,7 +112,6 @@ public class TrucknrollAndroidActivity extends Activity {
 	}
 
 	private void setChoice(City city, int index) {
-		Log.d("setChoice","Setting city" + city.getName() + " index " + index);
 		Button buttonToUse = null;
 		if(index == 0) {
 			buttonToUse =  button3;

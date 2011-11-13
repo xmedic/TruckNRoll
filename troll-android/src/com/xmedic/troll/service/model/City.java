@@ -83,4 +83,18 @@ public class City {
 		this.population = population;
 	}
 	
+	@Override
+	public boolean equals(Object object) {
+		if (null == object) return false;
+		if (! (object instanceof City)) return false;
+		
+		City city = (City) object;
+		return this.id.equals(city.getId());
+	}
+	
+	@Override
+	public int hashCode() {
+		return id.hashCode();
+	}
+	
 }

@@ -45,7 +45,6 @@ public class HomeScreenActiity extends Activity {
         setLevel(R.id.buttonLevel3, "3");
         setLevel(R.id.buttonLevel4, "4");
         setLevel(R.id.buttonLevel5, "5");
-        
 	}
 
 	private void setLevel(int buttonId, final String level) {

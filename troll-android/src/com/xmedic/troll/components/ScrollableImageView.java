@@ -3,6 +3,7 @@ package com.xmedic.troll.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -15,11 +16,9 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
-import com.xmedic.troll.R;
 import com.xmedic.troll.service.MapMath;
 import com.xmedic.troll.service.MapMath.MapType;
 import com.xmedic.troll.service.model.City;
@@ -117,7 +116,6 @@ public class ScrollableImageView extends ImageView {
 			Point previous = null;
 			for(Point point : history) {
 				if(previous != null) {
-					Log.d("DRAW", "Prev x" +previous.x + " Prev y " + previous.y + " Px + "+point.x + " Py " + point.y);
 					canvas.drawLine(previous.x, previous.y, point.x, point.y, linePaint);
 				}
 				previous = point;
