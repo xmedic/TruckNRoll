@@ -28,7 +28,7 @@ public class LevelPreviewActivity extends Activity {
         
         setContentView(R.layout.levelpreview);
         
-        Button button = (Button)findViewById(R.id.startLevel);
+        View button = findViewById(R.id.clicktocontinue);
 
         
         service = new TrollServiceSqlLite(getBaseContext());
