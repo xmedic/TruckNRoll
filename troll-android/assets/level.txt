@@ -1,5 +1,5 @@
-1;Level1;Welcome to Truck&Roll;19;3
+1;Level1;Welcome to Truck&Roll;0;1
 2;Level1;Benai varom prie juros;0;2
 3;Level1;Skersai isilgai;7;47
-4;Level1;Welcome to Truck&Roll;19;3
-5;Level1;Welcome to Truck&Roll;19;3
+4;Level1;Normal way;19;3
+5;Level1;Welcome to Truck&Roll;51;41
