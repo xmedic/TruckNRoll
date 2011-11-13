@@ -110,6 +110,7 @@ public class SqlLiteImportHelper {
 			     values.put("description", columns[2].trim());
 			     values.put("startCityId", columns[3].trim());
 			     values.put("goalCityId", columns[4].trim());
+			     values.put("timeLimit", columns[5].trim());
 			     levels.insert(values);
 			 }
 

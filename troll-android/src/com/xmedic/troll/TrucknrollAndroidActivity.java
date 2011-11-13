@@ -72,7 +72,7 @@ public class TrucknrollAndroidActivity extends Activity {
         goalView.setText("Goal: "  + goal.getName());
         mapView.setGoalCity(goal);
 
-        counter = new CountDown(10000,1000, timeLeftView);
+        counter = new CountDown(Integer.parseInt(level.getTimeLimit()) * 1000,1000, timeLeftView);
         counter.start();
         counter.setOnFinishListener(new CountDown.OnCounterFinishListener() {	
 			public void finished() {
@@ -154,9 +154,7 @@ public class TrucknrollAndroidActivity extends Activity {
        button4.setOnClickListener(citySelectedListener);
        
        goalView = (TextView)findViewById(R.id.targetcity);
-       
        mapView = (ScrollableImageView)findViewById(R.id.map);
-       
        timeLeftView = (TextView)findViewById(R.id.timeleftlabel);
        
        successDialog =  new SuccessDialog(this, level.getId()); 

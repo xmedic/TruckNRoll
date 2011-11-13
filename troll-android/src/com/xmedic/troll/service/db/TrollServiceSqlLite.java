@@ -38,7 +38,7 @@ public class TrollServiceSqlLite implements TrollService {
 
 	public List<Level> getLevels() {
         Cursor cursor = db.rawQuery(
-        		"SELECT id, name, description, startCityId, goalCityId FROM level", 
+        		"SELECT id, name, description, startCityId, goalCityId, timeLimit FROM level", 
         		new String[] {});
         List<Level> levels = DataTransfomer.toList(cursor, DoLevel.instance);        
         return levels;
@@ -46,7 +46,7 @@ public class TrollServiceSqlLite implements TrollService {
 
 	public Level getLevel(String levelId) {
         Cursor cursor = db.rawQuery(
-        		"SELECT id, name, description, startCityId, goalCityId " +
+        		"SELECT id, name, description, startCityId, goalCityId, timeLimit " +
         		"FROM level WHERE id = ?", 
         		new String[] {levelId});
         return DataTransfomer.to(cursor, DoLevel.instance);
