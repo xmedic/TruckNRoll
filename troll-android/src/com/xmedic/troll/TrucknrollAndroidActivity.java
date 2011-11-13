@@ -17,6 +17,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
@@ -75,6 +76,17 @@ public class TrucknrollAndroidActivity extends Activity {
 				failDialog.show();
 			}
 		});
+        
+        successDialog =  new SuccessDialog(this);
+        
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
+        button1.setTypeface(tf);
+        button2.setTypeface(tf);
+        button3.setTypeface(tf);
+        button4.setTypeface(tf);
+        
+        goalView.setTypeface(tf);
+    	timeLeftView.setTypeface(tf);
     }
 
 	private void moveToCity(City city) {
