@@ -60,33 +60,25 @@ public class TrucknrollAndroidActivity extends Activity {
         setContentView(R.layout.main);
         service = new TrollServiceSqlLite(getBaseContext());
         
+        String levelId = getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID);
+        level = service.getLevel(levelId);
+        
         loadComponents();
         initGraphics();
-        level = service.getLevel(getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID));
+        
         moveToCity(service.getCity(level.getStartCityId()));
         
         City goal = service.getCity(level.getGoalCityId());
         goalView.setText("Goal: "  + goal.getName());
         mapView.setGoalCity(goal);
 
-        counter = new CountDown(30000,1000, timeLeftView);
+        counter = new CountDown(10000,1000, timeLeftView);
         counter.start();
         counter.setOnFinishListener(new CountDown.OnCounterFinishListener() {	
 			public void finished() {
 				failDialog.show();
 			}
 		});
-        
-        successDialog =  new SuccessDialog(this);
-        
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
-        button1.setTypeface(tf);
-        button2.setTypeface(tf);
-        button3.setTypeface(tf);
-        button4.setTypeface(tf);
-        
-        goalView.setTypeface(tf);
-    	timeLeftView.setTypeface(tf);
     }
 
 	private void moveToCity(City city) {
@@ -100,9 +92,6 @@ public class TrucknrollAndroidActivity extends Activity {
 		if(city.getId().equals(level.getGoalCityId())) {
 			counter.cancel();
 			timeLeftView.setTextColor(Color.GREEN);
-			Toast toast = Toast.makeText(getApplicationContext(), 
-					"Congrats! You have reached your destination", Toast.LENGTH_LONG);
-			toast.show();
 			successDialog.show();
 			return;
 		}
@@ -170,8 +159,17 @@ public class TrucknrollAndroidActivity extends Activity {
        
        timeLeftView = (TextView)findViewById(R.id.timeleftlabel);
        
-       successDialog =  new SuccessDialog(this); 
-       failDialog =  new FailDialog(this);
+       successDialog =  new SuccessDialog(this, level.getId()); 
+       failDialog =  new FailDialog(this,level.getId());
+       
+       Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
+       button1.setTypeface(tf);
+       button2.setTypeface(tf);
+       button3.setTypeface(tf);
+       button4.setTypeface(tf);
+       
+       goalView.setTypeface(tf);
+   	   timeLeftView.setTypeface(tf);
 	}
 
 	private void initGraphics() {
