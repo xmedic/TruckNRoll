@@ -77,6 +77,7 @@ public class TrucknrollAndroidActivity extends Activity {
         counter.setOnFinishListener(new CountDown.OnCounterFinishListener() {	
 			public void finished() {
 				failDialog.show();
+				hideButtons();
 			}
 		});
     }
