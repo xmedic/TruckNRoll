@@ -39,7 +39,7 @@ public class HomeScreenActiity extends Activity {
 		Button button = (Button) findViewById(buttonId);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent intent = new Intent(HomeScreenActiity.this, TrucknrollAndroidActivity.class);
+				Intent intent = new Intent(HomeScreenActiity.this, LevelPreviewActivity.class);
 				intent.putExtra(LEVEL_ID, level);
 				startActivity(intent);
 				
