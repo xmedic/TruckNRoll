@@ -12,10 +12,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class LevelPreviewActivity extends Activity {
 
 	private TrollService service;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,9 @@ public class LevelPreviewActivity extends Activity {
         
         setContentView(R.layout.levelpreview);
         
+        Button button = (Button)findViewById(R.id.startLevel);
+
+        
         service = new TrollServiceSqlLite(getBaseContext());
         
         final Level level = service.getLevel(getIntent().getExtras().getString(HomeScreenActiity.LEVEL_ID));
@@ -33,7 +38,8 @@ public class LevelPreviewActivity extends Activity {
         previewMap.setStartPoint(service.getCity(level.getStartCityId()).getPoint());
         previewMap.setEndPoint(service.getCity(level.getGoalCityId()).getPoint());
         
-        Button button = (Button)findViewById(R.id.startLevel);
+        loadTextLabels(level);
+
         button.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
@@ -44,5 +50,16 @@ public class LevelPreviewActivity extends Activity {
 		});
         
         
+	}
+
+
+	private void loadTextLabels(Level level) {
+        TextView goalText = (TextView)findViewById(R.id.goalText);
+        TextView timeGivenText = (TextView)findViewById(R.id.timeText);
+        TextView levelName = (TextView)findViewById(R.id.levelName);
+        goalText.setText(String.format("You most go from city %s to city %s", service.getCity(level.getStartCityId()).getName(),
+        		 service.getCity(level.getGoalCityId()).getName()));
+        timeGivenText.setText(String.format("in %s seconds", level.getTimeLimit()));
+        levelName.setText(level.getDescription());
 	}
 }

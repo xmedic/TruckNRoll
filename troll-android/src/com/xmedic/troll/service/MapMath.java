@@ -13,9 +13,9 @@ public class MapMath {
 	
 	public final static int MAP_HEIGHT = 1619;
 	
-	public final static int PREVIEW_MAP_WIDTH = 636;
+	public final static int PREVIEW_MAP_WIDTH = 300;
 	
-	public final static int PREVIEW_MAP_HEIGHT = 486;
+	public final static int PREVIEW_MAP_HEIGHT = 229;
 
 	public static Point toScrollPoint(Point point, MapType type) {
 		return new Point(((int)((type == MapType.NORMAL ? MAP_WIDTH :PREVIEW_MAP_WIDTH) /2 - point.x)) * -1,
@@ -24,5 +24,9 @@ public class MapMath {
 	
 	public static Point toDrawPoint(Point point, int screenX, int screenY) {
 		return new Point(point.x - screenX, point.y - screenY);
+	}
+
+	public static Point toPreviewDrawPoint(Point startPoint) {
+		return new Point((int)(startPoint.x / 7.06333), (int)(startPoint.y / 7.0698));
 	}
 }
