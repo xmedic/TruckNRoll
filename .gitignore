@@ -1,3 +1,5 @@
 bin/
 troll-android/bin/
+troll-android/gen/
 *.class
+troll-android/bin/classes/com/xmedic/troll/SplashScreenActivity.class
