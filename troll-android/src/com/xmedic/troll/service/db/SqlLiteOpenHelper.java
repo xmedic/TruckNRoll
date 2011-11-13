@@ -86,7 +86,8 @@ public class SqlLiteOpenHelper extends SQLiteOpenHelper {
                          "name         TEXT, " +
                          "description  TEXT, " +
         				 "startCityId  TEXT, " +
-        				 "goalCityId   TEXT)";
+        				 "goalCityId   TEXT, " +
+        				 "timeLimit    TEXT)";
 	 }
 
 }
