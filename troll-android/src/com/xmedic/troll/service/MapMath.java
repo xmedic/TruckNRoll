@@ -13,9 +13,9 @@ public class MapMath {
 	
 	public final static int MAP_HEIGHT = 1619;
 	
-	public final static int PREVIEW_MAP_WIDTH = 300;
+	public final static int PREVIEW_MAP_WIDTH = 512;
 	
-	public final static int PREVIEW_MAP_HEIGHT = 229;
+	public final static int PREVIEW_MAP_HEIGHT = 391;
 	
 	public final static int OVERCOMPENSATION = 150;
 
@@ -29,6 +29,6 @@ public class MapMath {
 	}
 
 	public static Point toPreviewDrawPoint(Point startPoint) {
-		return new Point((int)(startPoint.x / 7.06333), (int)(startPoint.y / 7.0698));
+		return new Point((int)(startPoint.x / 4.1386), (int)(startPoint.y / 4.14066));
 	}
 }

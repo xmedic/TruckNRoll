@@ -171,6 +171,14 @@ public class TrucknrollAndroidActivity extends Activity {
        goalView.setTypeface(tf);
    	   timeLeftView.setTypeface(tf);
 	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if(counter != null) {
+			counter.cancel();
+		}
+	}
 
 	private void initGraphics() {
         Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
