@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
 public class SuccessDialog extends Dialog implements android.view.View.OnClickListener {
@@ -21,6 +22,8 @@ public class SuccessDialog extends Dialog implements android.view.View.OnClickLi
 	 
 	public SuccessDialog(Context context, String levelId) {
 		super(context);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setTitle("Job well done.");
         this.context = context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layout = inflater.inflate(R.layout.successdialog,null);

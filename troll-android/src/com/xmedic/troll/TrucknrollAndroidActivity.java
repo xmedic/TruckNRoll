@@ -69,7 +69,7 @@ public class TrucknrollAndroidActivity extends Activity {
         moveToCity(service.getCity(level.getStartCityId()));
         
         City goal = service.getCity(level.getGoalCityId());
-        goalView.setText("Goal: "  + goal.getName());
+        goalView.setText(goal.getName());
         mapView.setGoalCity(goal);
 
         counter = new CountDown(Integer.parseInt(level.getTimeLimit()) * 1000,1000, timeLeftView);
@@ -77,6 +77,7 @@ public class TrucknrollAndroidActivity extends Activity {
         counter.setOnFinishListener(new CountDown.OnCounterFinishListener() {	
 			public void finished() {
 				failDialog.show();
+				hideButtons();
 			}
 		});
     }
@@ -160,12 +161,13 @@ public class TrucknrollAndroidActivity extends Activity {
        successDialog =  new SuccessDialog(this, level.getId()); 
        failDialog =  new FailDialog(this,level.getId());
        
-       Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
+       Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/frutiger.ttf");
        button1.setTypeface(tf);
        button2.setTypeface(tf);
        button3.setTypeface(tf);
        button4.setTypeface(tf);
        
+       tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
        goalView.setTypeface(tf);
    	   timeLeftView.setTypeface(tf);
 	}

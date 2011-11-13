@@ -80,11 +80,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_margin="5pt"
-            android:text="Level"
+            android:layout_margin="2pt"
+            android:text="Choose your trip"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="30pt"
-            android:textStyle="bold" android:shadowDx="0" android:shadowDy="2" android:shadowRadius="1" android:shadowColor="#ffffff" android:textColor="#333333" android:typeface="normal"/>
+            android:textStyle="bold" android:shadowDx="0" android:shadowDy="-2" android:shadowRadius="1" android:shadowColor="#000000" android:textColor="#cccccc" android:typeface="normal"/>
 
     </RelativeLayout>
 
