@@ -59,18 +59,18 @@ public class TrollServiceSqlLite implements TrollService {
         return DataTransfomer.to(cursor, DoCity.instance);
 	}
 
-	public List<City> getAllNeighbours(String cityId) {
+	public Set<City> getAllNeighbours(String cityId) {
         Cursor cursor = db.rawQuery(
         		"SELECT c.id, c.name, c.country, c.latitude, c.longitude, c.population, c.x, c.y " +
         				"FROM city c INNER JOIN road r ON c.id = r.toCityId " +
         				"WHERE r.fromCityId = ?", 
         		new String[] {cityId});
-        return DataTransfomer.toList(cursor, DoCity.instance);
+        return new HashSet<City> (DataTransfomer.toList(cursor, DoCity.instance));
 	}
 
 	
 	public List<City> getNearbyCities(String cityId, String goalId) {
-        List<City> nearby = getAllNeighbours(cityId);
+        Set<City> nearby = getAllNeighbours(cityId);
 		return randomize(minimize(nearby, cityId, goalId));
 	}
 
@@ -85,7 +85,7 @@ public class TrollServiceSqlLite implements TrollService {
 		return temp;
 	}
 
-	private List<City> minimize(List<City> nearby, String startId, String goalId) {
+	private List<City> minimize(Set<City> nearby, String startId, String goalId) {
 		if (nearby.size() > MAX_CHOICES) {
 			String nextHop = getNextHopFromShortestPath(startId, goalId);
 			List<City> result = new ArrayList<City>();
@@ -98,10 +98,13 @@ public class TrollServiceSqlLite implements TrollService {
 			if (result.size() > 0) {
 				nearby.remove(result.get(0));
 			} 
-			result.addAll(nearby.subList(0, MAX_CHOICES - result.size()));
+			for(City city : nearby) {
+				result.add(city);
+				if (result.size() == MAX_CHOICES) break;
+			}
 			return result;
 		} else
-			return nearby;
+			return new ArrayList<City>(nearby);
 	}
 
 	private String getNextHopFromShortestPath(String startId, String goalId) {
@@ -118,7 +121,7 @@ public class TrollServiceSqlLite implements TrollService {
 		while (needsVisit.size() > 0 && !goalAchieved) {
 			Set<String> newNeedsVisit = new HashSet<String>();
 			for (String city : needsVisit) {
-				List<City> neighbours = getAllNeighbours(city);
+				Set<City> neighbours = getAllNeighbours(city);
 				for (City neighbour : neighbours) {
 					if (!paths.containsKey(neighbour.getId())) {
 						newNeedsVisit.add(neighbour.getId());

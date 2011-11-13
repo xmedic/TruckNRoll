@@ -74,6 +74,18 @@
             </LinearLayout>
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5pt"
+            android:text="Level"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30pt"
+            android:textStyle="bold" android:shadowDx="4" android:shadowDy="4" android:shadowRadius="4" android:shadowColor="#FFFF00"/>
+
     </RelativeLayout>
 
 </LinearLayout>

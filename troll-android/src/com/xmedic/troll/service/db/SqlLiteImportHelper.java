@@ -78,6 +78,9 @@ public class SqlLiteImportHelper {
                 	values.put("fromCityId", columns[0]);
                 	values.put("toCityId", columns[i]);
                 	roads.insert(values);
+                	values.put("fromCityId", columns[i]);
+                	values.put("toCityId", columns[0]);
+                	roads.insert(values);
                 }
 
             }
