@@ -3,6 +3,15 @@
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:orientation="vertical" android:background="#fff">
 
+	<Button
+	        android:id="@+id/startLevel"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/rounded_corner_box"
+	        android:text="Start!"
+	        android:textSize="20dp" />
+    
 	    <com.xmedic.troll.components.PreviewImage
             android:id="@+id/previewMap"
     		android:layout_width="wrap_content"
@@ -11,14 +20,5 @@
      android:scaleType="center"
      android:background="#fff"
      android:layout_gravity="center"  />
-     
-     
-            <Button
-                android:id="@+id/startLevel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/rounded_corner_box"
-                android:text="Start!"
-                android:textSize="20dp" />
+
 </LinearLayout>
