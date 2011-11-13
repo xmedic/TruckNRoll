@@ -13,6 +13,8 @@ public interface TrollService {
 	
 	public List<City> getNearbyCities(String cityId, String goalId);
 	
+	public List<String> getShortestPath(String startCityId, String goalCityId);
+	
 	public City getCity(String id);
 
 }
