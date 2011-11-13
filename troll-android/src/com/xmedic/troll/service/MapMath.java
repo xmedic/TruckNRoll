@@ -25,7 +25,7 @@ public class MapMath {
 	}
 	
 	public static Point toDrawPoint(Point point, int screenX, int screenY) {
-		return new Point(point.x - screenX - OVERCOMPENSATION, point.y - screenY - OVERCOMPENSATION);
+		return new Point(point.x - (screenX - OVERCOMPENSATION), point.y - (screenY - OVERCOMPENSATION));
 	}
 
 	public static Point toPreviewDrawPoint(Point startPoint) {
