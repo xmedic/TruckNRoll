@@ -7,6 +7,7 @@ import com.xmedic.troll.service.model.Level;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -61,5 +62,12 @@ public class LevelPreviewActivity extends Activity {
         		 service.getCity(level.getGoalCityId()).getName()));
         timeGivenText.setText(String.format("in %s seconds", level.getTimeLimit()));
         levelName.setText(level.getDescription());
+        
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/frutiger.ttf");
+        goalText.setTypeface(tf);
+        timeGivenText.setTypeface(tf);
+        levelName.setTypeface(tf);
+        ((TextView)findViewById(R.id.itinerarytextView1)).setTypeface(tf);
+        ((TextView)findViewById(R.id.taptextView2)).setTypeface(tf);
 	}
 }
