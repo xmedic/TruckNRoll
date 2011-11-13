@@ -151,7 +151,7 @@ public class ScrollableImageView extends ImageView {
 					coordinates.y - 12, 
 					labelPaint);
 		}
-		if(goalCity != null) {
+		if(initialCity != null) {
 			Point coordinates = MapMath.toDrawPoint(initialCity.getPoint(), maxX, maxY);
 			canvas.drawBitmap(
 					BitmapFactory.decodeResource(getResources(), R.drawable.start_pin), 
