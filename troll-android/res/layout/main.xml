@@ -23,7 +23,7 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
         <RelativeLayout
@@ -34,18 +34,16 @@
             android:layout_alignParentLeft="true" android:visibility="visible">
 
             <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hudright" />
+
+            <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/hudleft" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/hudright" />
 
         </RelativeLayout>
 
@@ -63,9 +61,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_margin="5dp"
-                android:background="@drawable/rounded_corner_box"
+                android:background="@drawable/button"
                 android:text="Button"
-                android:textSize="20dp" />
+                android:textSize="20dp" android:textColor="#eee" android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/button3"
@@ -74,9 +72,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_margin="5dp"
-                android:background="@drawable/rounded_corner_box"
+                android:background="@drawable/button"
                 android:text="Button"
-                android:textSize="20dp" />
+                android:textSize="20dp" android:textColor="#eee" android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/button1"
@@ -85,9 +83,9 @@
                 android:layout_above="@+id/button3"
                 android:layout_alignParentRight="true"
                 android:layout_margin="5dp"
-                android:background="@drawable/rounded_corner_box"
+                android:background="@drawable/button"
                 android:text="Button"
-                android:textSize="20dp" />
+                android:textSize="20dp" android:textColor="#eee" android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/button4"
@@ -96,20 +94,35 @@
                 android:layout_above="@+id/button2"
                 android:layout_alignParentLeft="true"
                 android:layout_margin="5dp"
-                android:background="@drawable/rounded_corner_box"
+                android:background="@drawable/button"
                 android:text="Button"
-                android:textSize="20dp" />
+                android:textSize="20dp" android:textColor="#eee" android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" android:text=" " android:textSize="18pt"/>
 
             <TextView
                 android:id="@+id/targetcity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="@color/translucent_black"
+                android:layout_toLeftOf="@+id/textView1"
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20pt" />
+                android:textColor="#ffff00"
+                android:textSize="18pt" />
+
+            <TextView
+                android:id="@+id/timeleftlabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/textView1"
+                android:text="TextView" android:textSize="18pt" android:textColor="#ffff00" android:typeface="monospace"/>
 
         </RelativeLayout>
 

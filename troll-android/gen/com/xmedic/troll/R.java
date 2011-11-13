@@ -18,17 +18,18 @@ public final class R {
         public static final int asfaltas=0x7f020001;
         public static final int background=0x7f020002;
         public static final int backrepeat=0x7f020003;
-        public static final int disabled=0x7f020004;
-        public static final int gradient=0x7f020005;
-        public static final int hudleft=0x7f020006;
-        public static final int hudright=0x7f020007;
-        public static final int ic_launcher=0x7f020008;
-        public static final int icon=0x7f020009;
-        public static final int lietuvosplikaszemelapis=0x7f02000a;
-        public static final int normal=0x7f02000b;
-        public static final int pressed=0x7f02000c;
-        public static final int rounded_corner_box=0x7f02000d;
-        public static final int xmediclogo=0x7f02000e;
+        public static final int button=0x7f020004;
+        public static final int disabled=0x7f020005;
+        public static final int gradient=0x7f020006;
+        public static final int hudleft=0x7f020007;
+        public static final int hudright=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
+        public static final int icon=0x7f02000a;
+        public static final int lietuvosplikaszemelapis=0x7f02000b;
+        public static final int normal=0x7f02000c;
+        public static final int pressed=0x7f02000d;
+        public static final int rounded_corner_box=0x7f02000e;
+        public static final int xmediclogo=0x7f02000f;
     }
     public static final class id {
         public static final int button1=0x7f060009;
@@ -47,14 +48,16 @@ public final class R {
         public static final int linearLayout2=0x7f06000d;
         public static final int linearLayout3=0x7f060011;
         public static final int map=0x7f060001;
-        public static final int movingtruck=0x7f060017;
+        public static final int movingtruck=0x7f060019;
         public static final int progressBar1=0x7f060002;
         public static final int relativeLayout1=0x7f060000;
         public static final int relativeLayout2=0x7f060003;
         public static final int relativeLayout3=0x7f060006;
         public static final int targetcity=0x7f06000b;
-        public static final int xmediclogo=0x7f060016;
-        public static final int yo=0x7f060015;
+        public static final int textView1=0x7f060015;
+        public static final int timeleftlabel=0x7f060016;
+        public static final int xmediclogo=0x7f060018;
+        public static final int yo=0x7f060017;
     }
     public static final class layout {
         public static final int failscreen=0x7f030000;
