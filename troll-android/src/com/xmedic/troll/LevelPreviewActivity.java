@@ -57,7 +57,7 @@ public class LevelPreviewActivity extends Activity {
         TextView goalText = (TextView)findViewById(R.id.goalText);
         TextView timeGivenText = (TextView)findViewById(R.id.timeText);
         TextView levelName = (TextView)findViewById(R.id.levelName);
-        goalText.setText(String.format("You most go from city %s to city %s", service.getCity(level.getStartCityId()).getName(),
+        goalText.setText(String.format("You must go from city %s to city %s", service.getCity(level.getStartCityId()).getName(),
         		 service.getCity(level.getGoalCityId()).getName()));
         timeGivenText.setText(String.format("in %s seconds", level.getTimeLimit()));
         levelName.setText(level.getDescription());

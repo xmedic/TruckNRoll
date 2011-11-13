@@ -35,13 +35,8 @@ public class SplashScreenActivity extends Activity {
         
         setContentView(R.layout.splashscreen);
                 
-        findViewById(R.id.yo).setOnClickListener(new View.OnClickListener() {			
-			public void onClick(View v) {
-				startActivity(new Intent(SplashScreenActivity.this, HomeScreenActiity.class));
-			}
-		});
-        
-        new Timer().schedule(new TimerTask() {
+        final Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
 			
 			@Override
 			public void run() {
@@ -49,7 +44,13 @@ public class SplashScreenActivity extends Activity {
 			}
 		}, 3000);
         
-        
+        findViewById(R.id.yo).setOnClickListener(new View.OnClickListener() {			
+			public void onClick(View v) {
+				timer.cancel();
+				startActivity(new Intent(SplashScreenActivity.this, HomeScreenActiity.class));
+			}
+		});
+                
         Display display = getWindowManager().getDefaultDisplay(); 
         int width = display.getWidth();
         int height = display.getHeight();

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="wrap_content">
-
 	<LinearLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
@@ -14,7 +12,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true" android:text="Well done!"
-                 android:textSize="18pt"/>
+                 android:textSize="18pt" android:visibility="gone"/>
 
 		<RelativeLayout
 		    android:id="@+id/relativeLayout1"
@@ -30,27 +28,31 @@
 		        android:src="@drawable/successroll" />
 
 		    <Button
+		        android:id="@+id/nextLevel"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBottom="@+id/successImage"
+		        android:layout_alignRight="@+id/successImage"
+		        android:text="Next Level" android:textSize="12pt" android:background="@color/translucent_black" android:textColor="#cccccc"/>
+
+		    <Button
 		        android:id="@+id/reviewLevel"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
+		        android:layout_alignBaseline="@+id/nextLevel"
+		        android:layout_alignBottom="@+id/nextLevel"
 		        android:layout_alignParentLeft="true"
-		        android:layout_centerVertical="true"
-		        android:text="Review level" />
-		    		    <Button
-		    		        android:id="@+id/nextLevel"
-		    		        android:layout_width="wrap_content"
-		    		        android:layout_height="wrap_content"
-		    		        android:layout_alignParentBottom="true"
-		    		        android:layout_alignRight="@+id/successImage"
-		    		        android:text="Next Level" />
-		    		    <Button
-		    		        android:id="@+id/mainMenuSuccess"
-		    		        android:layout_width="wrap_content"
-		    		        android:layout_height="wrap_content"
-		    		        android:layout_alignParentLeft="true"
-		    		        android:layout_below="@+id/reviewLevel"
-		    		        android:text="Main Menu" />
+		        android:text="Review level" android:textSize="12pt" android:background="@color/translucent_black" android:textColor="#cccccc"/>
+
+		    <Button
+		        android:id="@+id/mainMenuSuccess"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentTop="true"
+		        android:layout_alignRight="@+id/successImage"
+		        android:text="Main Menu" android:textSize="12pt" android:background="@color/translucent_black" android:textColor="#cccccc"/>
+
 		</RelativeLayout>
 
 	</LinearLayout>
-</ScrollView>
+
