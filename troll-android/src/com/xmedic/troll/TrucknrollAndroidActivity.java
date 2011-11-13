@@ -79,17 +79,6 @@ public class TrucknrollAndroidActivity extends Activity {
 				failDialog.show();
 			}
 		});
-        
-        successDialog =  new SuccessDialog(this, levelId);
-        
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
-        button1.setTypeface(tf);
-        button2.setTypeface(tf);
-        button3.setTypeface(tf);
-        button4.setTypeface(tf);
-        
-        goalView.setTypeface(tf);
-    	timeLeftView.setTypeface(tf);
     }
 
 	private void moveToCity(City city) {
@@ -172,6 +161,15 @@ public class TrucknrollAndroidActivity extends Activity {
        
        successDialog =  new SuccessDialog(this, level.getId()); 
        failDialog =  new FailDialog(this,level.getId());
+       
+       Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/fixed.ttf");
+       button1.setTypeface(tf);
+       button2.setTypeface(tf);
+       button3.setTypeface(tf);
+       button4.setTypeface(tf);
+       
+       goalView.setTypeface(tf);
+   	   timeLeftView.setTypeface(tf);
 	}
 
 	private void initGraphics() {
