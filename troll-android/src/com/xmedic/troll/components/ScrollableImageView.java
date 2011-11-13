@@ -1,29 +1,28 @@
 package com.xmedic.troll.components;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-
-import java.util.Set;
-
-import java.util.Timer;
-import java.util.TimerTask;
-
-import com.xmedic.troll.service.MapMath;
-import com.xmedic.troll.service.MapMath.MapType;
-import com.xmedic.troll.service.model.City;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.Handler;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+
+import com.xmedic.troll.R;
+import com.xmedic.troll.service.MapMath;
+import com.xmedic.troll.service.MapMath.MapType;
+import com.xmedic.troll.service.model.City;
 
 public class ScrollableImageView extends ImageView {
 
@@ -39,6 +38,7 @@ public class ScrollableImageView extends ImageView {
     int maxY;
     
     Paint blackPaint;
+    Paint labelPaint;
     Paint bluePaint;
     Paint linePaint;
     Paint goalPaint;
@@ -75,6 +75,13 @@ public class ScrollableImageView extends ImageView {
 		 blackPaint = new Paint();
 		 blackPaint.setColor(Color.BLACK);
 		 blackPaint.setTextSize(30);
+
+
+		 labelPaint = new TextPaint();
+		 labelPaint.setColor(Color.BLACK);
+		 labelPaint.setTextSize(16);
+		 labelPaint.setAntiAlias(true);
+		 labelPaint.setTypeface(Typeface.DEFAULT_BOLD);
 		 
 		 bluePaint = new Paint();
 		 bluePaint.setColor(Color.BLUE);
@@ -82,11 +89,13 @@ public class ScrollableImageView extends ImageView {
 		 linePaint = new Paint();
 		 linePaint.setColor(Color.GRAY);
 		 linePaint.setStrokeWidth(5);
+		 linePaint.setAntiAlias(true);
+		 linePaint.setPathEffect(new DashPathEffect(new float[] {10, 10}, 0));
 		 
 		 goalPaint = new Paint();
 		 goalPaint.setColor(Color.RED);
 		 goalPaint.setStrokeWidth(5);
-		 
+
 		 initialCityPaint  = new Paint();
 		 initialCityPaint.setColor(Color.CYAN);
 		 initialCityPaint.setStrokeWidth(5);
@@ -103,26 +112,7 @@ public class ScrollableImageView extends ImageView {
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
-
-		if(city != null) {
-			Point coordinates = MapMath.toDrawPoint(city.getPoint(), maxX, maxY);
-			canvas.drawCircle(coordinates.x, coordinates.y, 10, blackPaint);
-			canvas.drawText(city.getName(), coordinates.x - 20, coordinates.y - 10, blackPaint);
-		}
-		if(nearestCities != null) {
-			for(City nearestCity : nearestCities) {
-				Point coordinates = MapMath.toDrawPoint(nearestCity.getPoint(), maxX, maxY);
-				canvas.drawCircle(coordinates.x, coordinates.y, 10, bluePaint);
-			}
-		}
-		if(goalCity != null) {
-			Point coordinates = MapMath.toDrawPoint(goalCity.getPoint(), maxX, maxY);
-			canvas.drawCircle(coordinates.x, coordinates.y, 6, goalPaint);
-		}
-		if(goalCity != null) {
-			Point coordinates = MapMath.toDrawPoint(initialCity.getPoint(), maxX, maxY);
-			canvas.drawCircle(coordinates.x, coordinates.y, 6, initialCityPaint);
-		}
+		
 		if(history.size() > 1) {
 			Point previous = null;
 			for(Point point : history) {
@@ -132,6 +122,44 @@ public class ScrollableImageView extends ImageView {
 				}
 				previous = point;
 			}
+		}
+
+		if(city != null) {
+			Point coordinates = MapMath.toDrawPoint(city.getPoint(), maxX, maxY);
+
+			canvas.drawText(city.getName(), coordinates.x - 20, coordinates.y - 10, labelPaint);
+			canvas.drawBitmap(
+					BitmapFactory.decodeResource(getResources(), R.drawable.active_pin), 
+					coordinates.x - 15, 
+					coordinates.y - 12, 
+					labelPaint);
+
+		}
+		if(nearestCities != null) {
+			for(City nearestCity : nearestCities) {
+				Point coordinates = MapMath.toDrawPoint(nearestCity.getPoint(), maxX, maxY);
+				canvas.drawBitmap(
+						BitmapFactory.decodeResource(getResources(), R.drawable.normal_pin), 
+						coordinates.x - 15, 
+						coordinates.y - 12, 
+						labelPaint);
+			}
+		}
+		if(goalCity != null) {
+			Point coordinates = MapMath.toDrawPoint(goalCity.getPoint(), maxX, maxY);
+			canvas.drawBitmap(
+					BitmapFactory.decodeResource(getResources(), R.drawable.finish_ping), 
+					coordinates.x - 15, 
+					coordinates.y - 12, 
+					labelPaint);
+		}
+		if(goalCity != null) {
+			Point coordinates = MapMath.toDrawPoint(initialCity.getPoint(), maxX, maxY);
+			canvas.drawBitmap(
+					BitmapFactory.decodeResource(getResources(), R.drawable.start_pin), 
+					coordinates.x - 15, 
+					coordinates.y - 12, 
+					labelPaint);
 		}
 	}
 	
