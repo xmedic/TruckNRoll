@@ -1,43 +1,50 @@
 package com.xmedic.troll.components;
 
-import java.util.Observer;
-
 import android.graphics.Color;
 import android.os.CountDownTimer;
-import android.view.View.OnClickListener;
+import android.text.format.DateUtils;
 import android.widget.TextView;
+
+import com.xmedic.troll.R;
 
 public class CountDown extends CountDownTimer {
 	
-	private TextView target;
+	private final TextView target;
 	private OnCounterFinishListener onFinishListener;
 
-	public CountDown(long millisInFuture, long countDownInterval, TextView target) {
+    private final static String timeOut = "00:00";
+    private final static String timeFormat = "00:%s";
+    private final static String timeFormatFraction = "00:0%s";
+    
+    private final static int WARNING_LIMIT = 10;
+
+	public CountDown(final long millisInFuture, final long countDownInterval, final TextView target) {
 		super(millisInFuture, countDownInterval);
 		this.target = target;
 	}
 
 	@Override
 	public void onFinish() {
-		target.setText("00:00");
+        target.setText(timeOut);
 		onFinishListener.finished();
 	}
 
 	@Override
-	public void onTick(long millisUntilFinished) {
-		long left =  millisUntilFinished/1000;
-		target.setText(((left >= 10) ? "00:" : "00:0") + left);
-		if(left < 10) {
+	public void onTick(final long millisUntilFinished) {
+        long left = millisUntilFinished / DateUtils.SECOND_IN_MILLIS;
+        target.setText(String.format(
+                (left >= WARNING_LIMIT) ? timeFormat : timeFormatFraction, left));
+
+        if (left < WARNING_LIMIT) {
 			target.setTextColor(Color.RED);
 		} else {
-			target.setTextColor(Color.parseColor("#ffff00"));
+            target.setTextColor(R.color.time_left_ok);
 		}
 	}
 
-	public void setOnFinishListener(OnCounterFinishListener onFinishListener) {
+	public void setOnFinishListener(final OnCounterFinishListener onFinishListener) {
 		this.onFinishListener = onFinishListener;
 	}
-	
 	
 	public static abstract class OnCounterFinishListener {
 		public abstract void finished();

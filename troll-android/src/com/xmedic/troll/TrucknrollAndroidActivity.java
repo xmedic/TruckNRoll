@@ -1,28 +1,12 @@
 package com.xmedic.troll;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import com.xmedic.troll.components.CountDown;
-import com.xmedic.troll.components.ScrollableImageView;
-import com.xmedic.troll.dialogs.FailDialog;
-import com.xmedic.troll.dialogs.SuccessDialog;
-import com.xmedic.troll.service.TrollService;
-import com.xmedic.troll.service.db.TrollServiceSqlLite;
-import com.xmedic.troll.service.model.City;
-import com.xmedic.troll.service.model.Level;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.Typeface;
-import android.opengl.Visibility;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,7 +14,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.xmedic.troll.components.CountDown;
+import com.xmedic.troll.components.GameMapView;
+import com.xmedic.troll.dialogs.FailDialog;
+import com.xmedic.troll.dialogs.SuccessDialog;
+import com.xmedic.troll.service.TrollService;
+import com.xmedic.troll.service.db.TrollServiceSqlLite;
+import com.xmedic.troll.service.model.City;
+import com.xmedic.troll.service.model.Level;
 
 
 public class TrucknrollAndroidActivity extends Activity {
@@ -39,7 +31,7 @@ public class TrucknrollAndroidActivity extends Activity {
 	private Button button2;
 	private Button button3;
 	private Button button4;
-	private ScrollableImageView mapView;
+	private GameMapView mapView;
 	private TextView goalView;
 	private TextView timeLeftView;
 	
@@ -53,7 +45,7 @@ public class TrucknrollAndroidActivity extends Activity {
 	private FailDialog failDialog;
 	
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -75,19 +67,20 @@ public class TrucknrollAndroidActivity extends Activity {
         counter = new CountDown(Integer.parseInt(level.getTimeLimit()) * 1000,1000, timeLeftView);
         counter.start();
         counter.setOnFinishListener(new CountDown.OnCounterFinishListener() {	
-			public void finished() {
+			@Override
+            public void finished() {
 				failDialog.show();
 				hideButtons();
 			}
 		});
     }
 
-	private void moveToCity(City city) {
+	private void moveToCity(final City city) {
 		
 		hideButtons();		
 	
 		int index = 0;
-		mapView.setCenter(city, this);
+        mapView.setCenter(city);
 		mapView.setNearest(null);
 		
 		if(city.getId().equals(level.getGoalCityId())) {
@@ -112,7 +105,7 @@ public class TrucknrollAndroidActivity extends Activity {
 		button4.setVisibility(View.INVISIBLE);
 	}
 
-	private void setChoice(City city, int index) {
+	private void setChoice(final City city, final int index) {
 		Button buttonToUse = null;
 		if(index == 0) {
 			buttonToUse =  button3;
@@ -131,7 +124,7 @@ public class TrucknrollAndroidActivity extends Activity {
 		}
 	}
 	
-	private void citySelected(String cityId) {
+	private void citySelected(final String cityId) {
 		moveToCity(service.getCity(cityId));
 		
 	}
@@ -140,7 +133,7 @@ public class TrucknrollAndroidActivity extends Activity {
 	
 		citySelectedListener = new OnClickListener() {
 			
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				citySelected(v.getTag().toString());
 			}
 		};
@@ -155,7 +148,7 @@ public class TrucknrollAndroidActivity extends Activity {
        button4.setOnClickListener(citySelectedListener);
        
        goalView = (TextView)findViewById(R.id.targetcity);
-       mapView = (ScrollableImageView)findViewById(R.id.map);
+       mapView = (GameMapView)findViewById(R.id.map);
        timeLeftView = (TextView)findViewById(R.id.timeleftlabel);
        
        successDialog =  new SuccessDialog(this, level.getId()); 

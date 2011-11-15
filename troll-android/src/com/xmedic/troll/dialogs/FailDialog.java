@@ -9,18 +9,17 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.xmedic.troll.HomeScreenActiity;
-import com.xmedic.troll.LevelPreviewActivity;
 import com.xmedic.troll.R;
 import com.xmedic.troll.TrucknrollAndroidActivity;
 
-public class FailDialog  extends Dialog implements android.view.View.OnClickListener {
+public class FailDialog extends Dialog {
 
 	 private final Context context;
 	 private final View layout;
 	 
-	 private String levelId;
+	 private final String levelId;
 	 
-	public FailDialog(Context context, String levelId) {
+	public FailDialog(final Context context, final String levelId) {
 		super(context);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
        this.context = context;
@@ -36,7 +35,7 @@ public class FailDialog  extends Dialog implements android.view.View.OnClickList
 		Button mainMenuButton = (Button)findViewById(R.id.mainMenu);
 		mainMenuButton.setOnClickListener(new View.OnClickListener() {
 			
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				Intent intent = new Intent(context, HomeScreenActiity.class);
 				context.startActivity(intent);		
 			}
@@ -45,17 +44,11 @@ public class FailDialog  extends Dialog implements android.view.View.OnClickList
 		Button retryLevel = (Button)findViewById(R.id.retryLevel);
 		retryLevel.setOnClickListener(new View.OnClickListener() {
 		
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				Intent intent = new Intent(context, TrucknrollAndroidActivity.class);
 				intent.putExtra(HomeScreenActiity.LEVEL_ID, levelId);
 				context.startActivity(intent);		
 			}
 		});
 	}
-
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

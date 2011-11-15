@@ -1,26 +1,25 @@
 package com.xmedic.troll.dialogs;
 
-import com.xmedic.troll.HomeScreenActiity;
-import com.xmedic.troll.LevelPreviewActivity;
-import com.xmedic.troll.R;
-
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
-public class SuccessDialog extends Dialog implements android.view.View.OnClickListener {
+import com.xmedic.troll.HomeScreenActiity;
+import com.xmedic.troll.LevelPreviewActivity;
+import com.xmedic.troll.R;
+
+public class SuccessDialog extends Dialog {
 
 	 private final Context context;
 	 private final View layout;
 	 
-	 private String levelId;
+	 private final String levelId;
 	 
-	public SuccessDialog(Context context, String levelId) {
+	public SuccessDialog(final Context context, final String levelId) {
 		super(context);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setTitle("Job well done.");
@@ -36,7 +35,7 @@ public class SuccessDialog extends Dialog implements android.view.View.OnClickLi
 		Button mainMenuButton = (Button)findViewById(R.id.mainMenuSuccess);
 		mainMenuButton.setOnClickListener(new View.OnClickListener() {
 			
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				Intent intent = new Intent(context, HomeScreenActiity.class);
 				context.startActivity(intent);		
 			}
@@ -45,7 +44,7 @@ public class SuccessDialog extends Dialog implements android.view.View.OnClickLi
 		Button reviewButton = (Button)findViewById(R.id.reviewLevel);
 		reviewButton.setOnClickListener(new View.OnClickListener() {
 			
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				hide();	
 			}
 		});
@@ -54,15 +53,11 @@ public class SuccessDialog extends Dialog implements android.view.View.OnClickLi
 		Button nextLevelButton = (Button)findViewById(R.id.nextLevel);
 		nextLevelButton.setOnClickListener(new View.OnClickListener() {
 		Integer nextLevel =  (Integer.parseInt(levelId) + 1);
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				Intent intent = new Intent(context, LevelPreviewActivity.class);
 				intent.putExtra(HomeScreenActiity.LEVEL_ID, nextLevel.toString());
 				context.startActivity(intent);		
 			}
 		});
 	}
-	public void onClick(View v) {
-		
-	}
-
 }

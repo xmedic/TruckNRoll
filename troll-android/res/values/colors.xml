@@ -1,3 +1,4 @@
 <resources>
 <color name="translucent_black">#80000000</color>
+<color name="time_left_ok">#ffff00</color>
 </resources>

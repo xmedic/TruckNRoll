@@ -1,19 +1,16 @@
 package com.xmedic.troll;
 
-import com.xmedic.troll.components.PreviewImage;
-import com.xmedic.troll.service.TrollService;
-import com.xmedic.troll.service.db.TrollServiceSqlLite;
-import com.xmedic.troll.service.model.Level;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.xmedic.troll.components.PreviewImage;
+import com.xmedic.troll.service.TrollService;
+import com.xmedic.troll.service.db.TrollServiceSqlLite;
+import com.xmedic.troll.service.model.Level;
 
 public class LevelPreviewActivity extends Activity {
 
@@ -21,12 +18,8 @@ public class LevelPreviewActivity extends Activity {
 	
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
         setContentView(R.layout.levelpreview);
         
         View button = findViewById(R.id.clicktocontinue);
@@ -43,7 +36,7 @@ public class LevelPreviewActivity extends Activity {
 
         button.setOnClickListener(new View.OnClickListener() {
 			
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				Intent intent = new Intent(LevelPreviewActivity.this, TrucknrollAndroidActivity.class);
 				intent.putExtra(HomeScreenActiity.LEVEL_ID, level.getId());
 				startActivity(intent);
@@ -54,7 +47,7 @@ public class LevelPreviewActivity extends Activity {
 	}
 
 
-	private void loadTextLabels(Level level) {
+	private void loadTextLabels(final Level level) {
         TextView goalText = (TextView)findViewById(R.id.goalText);
         TextView timeGivenText = (TextView)findViewById(R.id.timeText);
         TextView levelName = (TextView)findViewById(R.id.levelName);

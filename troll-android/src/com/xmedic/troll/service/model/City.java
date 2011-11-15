@@ -1,8 +1,4 @@
 package com.xmedic.troll.service.model;
-
-import com.xmedic.troll.service.MapMath;
-import com.xmedic.troll.service.MapMath.MapType;
-
 import android.graphics.Point;
 
 
@@ -31,7 +27,7 @@ public class City {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(final String id) {
 		this.id = id;
 	}
 
@@ -39,7 +35,7 @@ public class City {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -47,7 +43,7 @@ public class City {
 		return country;
 	}
 
-	public void setCountry(String country) {
+	public void setCountry(final String country) {
 		this.country = country;
 	}
 
@@ -55,7 +51,7 @@ public class City {
 		return latitude;
 	}
 
-	public void setLatitude(Double latitude) {
+	public void setLatitude(final Double latitude) {
 		this.latitude = latitude;
 	}
 
@@ -63,7 +59,7 @@ public class City {
 		return longitude;
 	}
 
-	public void setLongitude(Double longitude) {
+	public void setLongitude(final Double longitude) {
 		this.longitude = longitude;
 	}
 
@@ -71,7 +67,7 @@ public class City {
 		return point;
 	}
 
-	public void setPoint(Point point) {
+	public void setPoint(final Point point) {
 		this.point = point;
 	}
 
@@ -79,14 +75,18 @@ public class City {
 		return population;
 	}
 
-	public void setPopulation(Long population) {
+	public void setPopulation(final Long population) {
 		this.population = population;
 	}
 	
 	@Override
-	public boolean equals(Object object) {
-		if (null == object) return false;
-		if (! (object instanceof City)) return false;
+	public boolean equals(final Object object) {
+		if (null == object) {
+            return false;
+        }
+		if (! (object instanceof City)) {
+            return false;
+        }
 		
 		City city = (City) object;
 		return this.id.equals(city.getId());

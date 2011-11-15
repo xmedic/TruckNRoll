@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
@@ -34,12 +32,8 @@ public class HomeScreenActiity extends Activity {
 	}
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
         setContentView(R.layout.homescreen);
         
         setLevel(R.id.buttonLevel1, "1");
@@ -54,12 +48,12 @@ public class HomeScreenActiity extends Activity {
         levelLabel.setTypeface(tf);
 	}
 
-	private void setLevel(int buttonId, final String level) {
+	private void setLevel(final int buttonId, final String level) {
 		Button button = (Button) findViewById(buttonId);
         button.startAnimation(a);
 
 		button.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				Intent intent = new Intent(HomeScreenActiity.this, LevelPreviewActivity.class);
 				intent.putExtra(LEVEL_ID, level);
 				startActivity(intent);				
